@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from models import Request, Indicator, Choice, MatrixData
+from .models import Request, Indicator, Choice, MatrixData
 from django.shortcuts import render, redirect, get_object_or_404
-from forms import MethodForm, IndicatorForm, ChoiceForm
+from .forms import MethodForm, IndicatorForm, ChoiceForm
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
@@ -37,7 +37,7 @@ def create_request(request):
             request_instance.indicators.add(*indicators)
             request_instance.choices.add(*choices)
 
-            return redirect('success3', request_id=request_instance.id)  # Redirect to a success page or any other page
+            return redirect('success', request_id=request_instance.id)  # Redirect to a success page or any other page
     else:
         method_form = MethodForm(prefix='method')
     return render(request, './Non_Fuzzy_ranking_methods/Non_Fuzzy_inputs.html', {'method_form': method_form})
@@ -94,7 +94,7 @@ def save_matrix_data(request):
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
 
 
-def calculate_method(matrix_data, indicator_weights, indicator_types, method_name):
+def calculate_method(matrix_data, indicator_weights, indicator_types, method_name, hyperparameter_value):
     # Convert matrix data to numpy array
     dataset = np.array(matrix_data)
 
@@ -109,6 +109,23 @@ def calculate_method(matrix_data, indicator_weights, indicator_types, method_nam
             criterion_type.append('max')
         elif indicator_type == 'Negative':
             criterion_type.append('min')
+
+    if method_name == 'method-CoCoSo' and hyperparameter_value is None:
+        hyperparameter_value = 0.5
+    elif method_name == 'method-CODAS' and hyperparameter_value is None:
+        hyperparameter_value = 0.02
+    elif method_name == 'method-GRA' and hyperparameter_value is None:
+        hyperparameter_value = 0.5
+    elif method_name == 'method-ORESTE' and hyperparameter_value is None:
+        hyperparameter_value = 0.4
+    elif method_name == 'method-TODIM' and hyperparameter_value is None:
+        hyperparameter_value = 1
+    elif method_name == 'method-WSM' and hyperparameter_value is None:
+        hyperparameter_value = 0.5
+    elif method_name == 'method-WPM' and hyperparameter_value is None:
+        hyperparameter_value = 0.5
+    elif method_name == 'method-WASPAS' and hyperparameter_value is None:
+        hyperparameter_value = 0.5
 
     # Call the corresponding method based on the method_name argument
     if method_name == 'method-ARAS':
@@ -215,36 +232,36 @@ def calculate_method(matrix_data, indicator_weights, indicator_types, method_nam
     return result_dict
 
 method_calculations = {
-    'method-ARAS': 'ARAS',
-    'method-Borda': 'Borda',
-    'method-CoCoSo': 'CoCoSo',
-    'method-CODAS': 'CODAS',
-    'method-Copeland': 'Copeland',
-    'method-COPRAS': 'COPRAS',
-    'method-CRADIS': 'CRADIS',
-    'method-EDAS': 'EDAS',
-    'method-GRA': 'GRA',
-    'method-MABAC': 'MABAC',
-    'method-MACBETH': 'MACBETH',
-    'method-MAIRCA': 'MAIRCA',
-    'method-MARA': 'MARA',
-    'method-MARCOS': 'MARCOS',
-    'method-MOORA': 'MOORA',
-    'method-MOOSRA': 'MOOSRA',
-    'method-OCRA': 'OCRA',
-    'method-ORESTE': 'ORESTE',
-    'method-PIV': 'PIV',
-    'method-PSI': 'PSI',
-    'method-REGIME': 'REGIME',
-    'method-ROV': 'ROV',
-    'method-SAW': 'SAW',
-    'method-TODIM': 'TODIM',
-    'method-TOPSIS': 'TOPSIS',
-    'method-WSM': 'WSM',
-    'method-WPM': 'WPM',
-    'method-WASPAS': 'WASPAS',
-    'method-Simple WISP': 'Simple WISP',
-    'method-WISP': 'WISP',
+    'method-ARAS': calculate_method,
+    'method-Borda': calculate_method,
+    'method-CoCoSo': calculate_method,
+    'method-CODAS': calculate_method,
+    'method-Copeland': calculate_method,
+    'method-COPRAS': calculate_method,
+    'method-CRADIS': calculate_method,
+    'method-EDAS': calculate_method,
+    'method-GRA': calculate_method,
+    'method-MABAC': calculate_method,
+    'method-MACBETH': calculate_method,
+    'method-MAIRCA': calculate_method,
+    'method-MARA': calculate_method,
+    'method-MARCOS': calculate_method,
+    'method-MOORA': calculate_method,
+    'method-MOOSRA': calculate_method,
+    'method-OCRA': calculate_method,
+    'method-ORESTE': calculate_method,
+    'method-PIV': calculate_method,
+    'method-PSI': calculate_method,
+    'method-REGIME': calculate_method,
+    'method-ROV': calculate_method,
+    'method-SAW': calculate_method,
+    'method-TODIM': calculate_method,
+    'method-TOPSIS': calculate_method,
+    'method-WSM': calculate_method,
+    'method-WPM': calculate_method,
+    'method-WASPAS': calculate_method,
+    'method-Simple WISP': calculate_method,
+    'method-WISP': calculate_method,
 }
 
 def results(request, request_id):
@@ -266,6 +283,8 @@ def results(request, request_id):
     # Get the selected method and method name
     selected_method = request_instance.method.name
     method_name = f'{selected_method}'  # Assuming selected_method is an integer
+    hyperparameter_value = selected_method.hyperparameter_value
+
 
     # Initialize calculation_result with a default value
     calculation_result = None
@@ -287,6 +306,7 @@ def results(request, request_id):
         'matrix_data_obj': matrix_data_obj,
         'request_id': request_id,
         'selected_method': selected_method,
+        'hyperparameter_value': hyperparameter_value,
         'indicator_weights': indicator_weights,
         'indicator_types': indicator_types,
         'calculation_result': calculation_result,  # Pass the calculation result to the template if needed

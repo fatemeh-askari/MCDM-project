@@ -33,7 +33,12 @@ class Method(models.Model):
         ('method-WISP', 'WISP'),
     ]
     name = models.CharField(max_length=70, choices=DECISION_METHOD_CHOICES)
-    hyperparameter = models.FloatField(blank=True, null=True)
+    # hyperparameter = models.FloatField(blank=True, null=True),
+    url = models.URLField(blank=True, null=True)
+    short_description = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    hyperparameter_value = models.FloatField(blank=True, null=True)
+
 
 class Indicator(models.Model):
     POSITIVE = 'Positive'

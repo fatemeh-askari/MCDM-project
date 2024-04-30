@@ -1,10 +1,114 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Result Page</title>
 </head>
 <body>
+    <h1>Result Page</h1>
 
+    <h2>Request ID: {{ request_id }}</h2>
+
+    <h2>Saved Matrix Data</h2>
+    {% if matrix_data_obj %}
+        <table border="1">
+            {% for row in matrix_data_obj.data %}
+                <tr>
+                    {% for cell in row %}
+                        <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No matrix data available</p>
+    {% endif %}
+
+    <h2>Saved Matrix Data 3</h2>
+    {% if matrix_data_obj %}
+            {% for row in matrix_data_obj.data %}
+                    {% for cell in row %}
+                       {{ cell }}
+                    {% endfor %}
+            {% endfor %}
+
+    {% else %}
+        <p>No matrix data available</p>
+    {% endif %}
+
+
+{#    check #}
+      <h1>Result Page</h1>
+
+    <h2>Request ID: {{ request_id }}</h2>
+
+    {% if matrix_data_obj %}
+    <h2>Saved Matrix Data</h2>
+    <table border="1">
+        {% for row in matrix_data_obj.data %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No matrix data available</p>
+    {% endif %}
+
+    <h2>Selected Method: {{ selected_method }}</h2>
+
+    <h2>Indicator Weights</h2>
+    <ul>
+        {% for indicator in indicator_weights %}
+        <li>Name: {{ indicator.name }}</li>
+        <li>Type: {{ indicator.type }}</li>
+        <li>Weight: {{ indicator.weight }}</li>
+        {% endfor %}
+    </ul>
+
+
+
+<h2>Calculation Result</h2>
+<!-- Display the calculation result -->
+<h2>Calculation Result</h2>
+{% if calculation_result %}
+    <p>{{ calculation_result }}</p>
+{% else %}
+    <p>No calculation result available</p>
+{% endif %}
+
+
+<button id="calculateButton">Calculate</button>
+
+<script>
+    document.getElementById('calculateButton').addEventListener('click', function() {
+    // Get the selected method
+    var selectedMethod = document.querySelector('input[name="method"]:checked').value;
+
+    // Send AJAX request to the server
+    fetch('/calculate/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ method: selectedMethod })
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Calculation successful');
+        } else {
+            console.error('Failed to perform calculation');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+</script>
 </body>
 </html>
