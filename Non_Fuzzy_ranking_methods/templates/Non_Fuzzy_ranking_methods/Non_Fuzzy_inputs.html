@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<form id="requestForm" method="post">
+    {% csrf_token %}
+    <!-- Method selection field -->
+    <div class="form-group">
+        {{ method_form.as_p }}
+    </div>
+    <!-- Indicator fields -->
+    <div id="indicatorFields">
+        <div class="indicator-group">
+            <input type="text" name="indicators-name" placeholder="Indicator Name" required>
+            <select name="indicators-type" required>
+                <option value="Positive">Positive</option>
+                <option value="Negative">Negative</option>
+            </select>
+            <input type="number" name="indicators-weight" placeholder="Weight" step="any" required>
+            <div class="error-message" id="indicatorNameErrorMessage" style="display: none;"></div>
+        </div>
+    </div>
+    <button type="button" onclick="addIndicatorField()">Add Indicator</button>
+
+    <!-- Choice fields -->
+    <div id="choiceFields">
+        <div class="choice-group">
+            <input type="text" name="choices-name" placeholder="Choice Name" required>
+            <div class="error-message" id="choiceNameErrorMessage" style="display: none;"></div>
+        </div>
+    </div>
+    <button type="button" onclick="addChoiceField()">Add Choice</button>
+
+    <button type="submit">Submit</button>
+    <div class="error-message" id="validationErrorMessage" style="display: none;">Please add at least two indicators and two choices.</div>
+</form>
+
+<script>
+    function addIndicatorField() {
+        // Create a new indicator group
+        var indicatorGroup = document.createElement("div");
+        indicatorGroup.className = "indicator-group";
+
+        // Indicator Name field
+        var nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.name = "indicators-name";
+        nameInput.placeholder = "Indicator Name";
+        nameInput.required = true;
+        indicatorGroup.appendChild(nameInput);
+
+        // Indicator Type dropdown
+        var typeSelect = document.createElement("select");
+        typeSelect.name = "indicators-type";
+        typeSelect.required = true;
+        var positiveOption = document.createElement("option");
+        positiveOption.value = "Positive";
+        positiveOption.text = "Positive";
+        var negativeOption = document.createElement("option");
+        negativeOption.value = "Negative";
+        negativeOption.text = "Negative";
+        typeSelect.appendChild(positiveOption);
+        typeSelect.appendChild(negativeOption);
+        indicatorGroup.appendChild(typeSelect);
+
+        // Indicator Weight field
+        var weightInput = document.createElement("input");
+        weightInput.type = "number";
+        weightInput.name = "indicators-weight";
+        weightInput.placeholder = "Weight";
+        weightInput.step = "any";
+        weightInput.required = true;
+        indicatorGroup.appendChild(weightInput);
+
+        // Indicator Name error message
+        var errorMessage = document.createElement("div");
+        errorMessage.className = "error-message";
+        errorMessage.id = "indicatorNameErrorMessage";
+        errorMessage.style.display = "none";
+        indicatorGroup.appendChild(errorMessage);
+
+        // Append the new indicator group to the form
+        document.getElementById("indicatorFields").appendChild(indicatorGroup);
+    }
+
+    function addChoiceField() {
+        // Create a new choice group
+        var choiceGroup = document.createElement("div");
+        choiceGroup.className = "choice-group";
+
+        // Choice Name field
+        var nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.name = "choices-name";
+        nameInput.placeholder = "Choice Name";
+        nameInput.required = true;
+        choiceGroup.appendChild(nameInput);
+
+        // Choice Name error message
+        var errorMessage = document.createElement("div");
+        errorMessage.className = "error-message";
+        errorMessage.id = "choiceNameErrorMessage";
+        errorMessage.style.display = "none";
+        choiceGroup.appendChild(errorMessage);
+
+        // Append the new choice group to the form
+        document.getElementById("choiceFields").appendChild(choiceGroup);
+    }
+
+    // Function to check for duplicate indicator names
+    function checkDuplicateIndicatorName() {
+        var indicatorNames = document.querySelectorAll('[name="indicators-name"]');
+        var indicatorNameSet = new Set();
+        var duplicateIndicatorFound = false;
+
+        indicatorNames.forEach(function(indicatorNameInput) {
+            var indicatorName = indicatorNameInput.value.trim();
+            if (indicatorNameSet.has(indicatorName)) {
+                duplicateIndicatorFound = true;
+                // Display error message
+                var errorMessage = document.getElementById("indicatorNameErrorMessage");
+                errorMessage.textContent = "Duplicate indicator name is not allowed.";
+                errorMessage.style.display = "block";
+                return;
+            }
+            indicatorNameSet.add(indicatorName);
+        });
+
+        return duplicateIndicatorFound;
+    }
+
+    // Function to check for duplicate choice names
+    function checkDuplicateChoiceName() {
+        var choiceNames = document.querySelectorAll('[name="choices-name"]');
+        var choiceNameSet = new Set();
+        var duplicateChoiceFound = false;
+
+        choiceNames.forEach(function(choiceNameInput) {
+            var choiceName = choiceNameInput.value.trim();
+            if (choiceNameSet.has(choiceName)) {
+                duplicateChoiceFound = true;
+                // Display error message
+                var errorMessage = document.getElementById("choiceNameErrorMessage");
+                errorMessage.textContent = "Duplicate choice name is not allowed.";
+                errorMessage.style.display = "block";
+                return;
+            }
+            choiceNameSet.add(choiceName);
+        });
+
+        return duplicateChoiceFound;
+    }
+
+    // Function to check if there are at least two indicators and two choices
+    function checkNumberOfIndicatorsAndChoices() {
+        var numIndicators = document.querySelectorAll('.indicator-group').length;
+        var numChoices = document.querySelectorAll('.choice-group').length;
+        if (numIndicators < 2 || numChoices < 2) {
+            // Display validation error message
+            var errorMessage = document.getElementById("validationErrorMessage");
+            errorMessage.style.display = "block";
+            return false;
+        }
+        return true;
+    }
+
+    // Event listener for form submission
+    document.getElementById("requestForm").addEventListener("submit", function(event) {
+        // Check for duplicate indicator names
+        if (checkDuplicateIndicatorName()) {
+            event.preventDefault(); // Prevent form submission
+            return;
+        }
+
+        // Check for duplicate choice names
+        if (checkDuplicateChoiceName()) {
+            event.preventDefault(); // Prevent form submission
+            return;
+        }
+
+        // Check if there are at least two indicators and two choices
+
+        if (!checkNumberOfIndicatorsAndChoices()) {
+            event.preventDefault(); // Prevent form submission
+            return;
+        }
+    });
+</script>
+</body>
+</html>
