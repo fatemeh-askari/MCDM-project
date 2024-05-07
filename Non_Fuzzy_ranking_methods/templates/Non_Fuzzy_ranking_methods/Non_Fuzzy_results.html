@@ -1,114 +1,491 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- ===== Meta ===== -->
     <meta charset="UTF-8">
-    <title>Result Page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== Favicon ===== -->
+    <link rel="icon" type="image/x-icon" href="/static/assets/imgs/favicon.svg">
+
+    <!-- ===== Title ===== -->
+    <title>Stag - Personal Portfolio HTML5 Template</title>
+
+    <!-- ===== LineAwesome ===== -->
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+
+    <!-- ===== Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,100;1,9..40,200&display=swap"
+        rel="stylesheet">
+
+    <!-- ===== Stylesheet ===== -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/assets/css/swiper.min.css">
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <link rel="stylesheet" href="/static/assets/css/responsive.css">
+    <link rel="stylesheet" href="/static/assets/css/customize%20style.css">
 </head>
+
 <body>
-    <h1>Result Page</h1>
 
-    <h2>Request ID: {{ request_id }}</h2>
+    <main class="project-detail-page" id="top">
 
-    <h2>Saved Matrix Data</h2>
-    {% if matrix_data_obj %}
-        <table border="1">
-            {% for row in matrix_data_obj.data %}
-                <tr>
-                    {% for cell in row %}
-                        <td>{{ cell }}</td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>No matrix data available</p>
-    {% endif %}
+        <!-- Sticky Sidebar
+        ======================================= -->
+        <div class="sticky-sidebar">
+            <div class="sticky-sidebar-inner">
+                <div class="sidebar-top">
+                    <div class="sidebar-logo">
+                        <div class="left">
+                            <a href="{% url 'home' %}" class="logo-img">
+                                <img src="/static/assets/imgs/img-hero.png" alt="Logo">
+                            </a>
+                            <a href="{% url 'home' %}" class="logo-text">Decision Tools</a>
+                        </div>
+                        <div class="right">
+                            <span id="current-time"></span>
+                            <i class="las la-ellipsis-v"></i>
+                        </div>
+                    </div>
 
-    <h2>Saved Matrix Data 3</h2>
-    {% if matrix_data_obj %}
-            {% for row in matrix_data_obj.data %}
-                    {% for cell in row %}
-                       {{ cell }}
-                    {% endfor %}
-            {% endfor %}
+                    <div class="sidebar-me">
+                        <div class="sidebar-me-inner">
+                            <div class="img-box">
+                                <img src="/static/assets/imgs/img-hero.png" alt="Me">
+                            </div>
+                            <div class="content">
+                                <h3>David Henderson</h3>
+                                <p>Back End Developer</p>
+                                <span class="location"><i class="ph-duotone ph-map-pin"></i> San francisco</span>
+                            </div>
+                        </div>
+                    </div>
 
-    {% else %}
-        <p>No matrix data available</p>
-    {% endif %}
+                    <div class="sidebar-menu">
+                        <nav class="menu-lists">
+                            <ul>
+                                <li class="active-menu">
+                                    <a href="{% url 'home' %}"><span class="icon"><i class="ph-duotone ph-house"></i></span> <span class="title">Home</span></a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'rank' %}"><span class="icon"><i class="ph-duotone ph-squares-four"></i></span> <span class="title">Projects</span></a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'rank' %}"><span class="icon"><i class="ph-duotone ph-fingerprint"></i></span> <span class="title">About</span></a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'rank' %}"><span class="icon"><i class="las la-chart-bar"></i></span> <span class="title">Tools</span></a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contact' %}"><span class="icon"><i class="ph-duotone ph-paperclip"></i></span> <span class="title">Contact</span></a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'rank' %}"><span class="icon"><i class="ph-duotone ph-swatches"></i></span> <span class="title">Blog</span></a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="responsive-mode sidebar-bottom">
+                            <div class="social-link-wrap">
+                                <ul class="social-links">
+                                    <li><a><i class="lab la-github"></i></a></li>
+                                    <li><a><i class="lab la-xing"></i></a></li>
+                                    <li><a><i class="lab la-instagram"></i></a></li>
+                                    <li><a><i class="lab la-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                            <p class="copyright-text">
+                                &copy; 2024
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="humberg-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="sidebar-bottom">
+                    <div class="social-link-wrap">
+                        <ul class="social-links">
+                            <li><a href="https://dribbble.com/"><i class="lab la-dribbble"></i></a></li>
+                            <li><a href="https://twitter.com"><i class="lab la-xing"></i></a></li>
+                            <li><a href="https://instagram.com"><i class="lab la-instagram"></i></a></li>
+                            <li><a href="https://youtube.com"><i class="lab la-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                    <p class="copyright-text">
+                        &copy; 2024
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- End Sticky Sidebar -->
 
 
-{#    check #}
-      <h1>Result Page</h1>
+        <div class="page-content-wrapper">
 
-    <h2>Request ID: {{ request_id }}</h2>
+            <!-- Project Detail
+            ======================================= -->
+            <div class="project-detail-content-wrap">
+                    
+                <section class="project-detail-top">
+                    <div class="custom-container">
+                        <div class="custom-row">
+                            <div class="left">
+                                <div class="project-detail-header section-header">
+                                    <h4 class="subtitle common-box">
+                                        Interpretation
+                                    </h4>
+                                    <div class="animation-texts-wrap">
+                                        <div class="animation-text-inner">
+                                            <ul>
+                                                <li>⌘ The results of the comparison of the options according to the indicators are shown in the table below ⌘</li>
+                                                <li>Options are ranked according to best rank == highest score ⌘</li>
+                                                <li>You can try the results with other methods as well ⌘</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
 
-    {% if matrix_data_obj %}
-    <h2>Saved Matrix Data</h2>
-    <table border="1">
-        {% for row in matrix_data_obj.data %}
-        <tr>
-            {% for cell in row %}
-            <td>{{ cell }}</td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <p>No matrix data available</p>
-    {% endif %}
+                                <div class="project-top-content">
+                                    <span>{{ method_name }}</span>
+                                    <h2>Results</h2>
+{#                                    <p>{{ method_name }}</p>#}
+{#                                    <p>To address this challenge, our approach involved crafting a distinctive brand identity that effectively communicated Vutura Sioma's values of sustainability, innovation, and authenticity. Our team meticulously devised a comprehensive brand strategy centered around creating a visually.</p>#}
 
-    <h2>Selected Method: {{ selected_method }}</h2>
-
-    <h2>Indicator Weights</h2>
-    <ul>
-        {% for indicator in indicator_weights %}
-        <li>Name: {{ indicator.name }}</li>
-        <li>Type: {{ indicator.type }}</li>
-        <li>Weight: {{ indicator.weight }}</li>
-        {% endfor %}
-    </ul>
-
-
-
-<h2>Calculation Result</h2>
-<!-- Display the calculation result -->
-<h2>Calculation Result</h2>
-{% if calculation_result %}
-    <p>{{ calculation_result }}</p>
-{% else %}
-    <p>No calculation result available</p>
-{% endif %}
+                                <table border="1" id="resultTable">
+                                    <thead>
+                                        <tr>
+{#                                            <th style="min-width:150px">Option Number</th>#}
+                                            <th style="min-width: 150px;">Choice</th>
+                                            <th style="min-width: 40px">Rank</th>
+                                            <th style="min-width: 70px">Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for result in calculation_result %}
+                                        <tr>
+{#                                            <td>{{ result.option_num }}</td>#}
+                                            <td>
+                                                {% for choice in choices %}
+                                                    {% if forloop.counter0 == forloop.parentloop.counter0 %}
+                                                        {{ choice.name }}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                            <td>***</td>
+                                            <td>{{ result.score }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
 
 
-<button id="calculateButton">Calculate</button>
 
+                                </div>
+
+                            </div>
+                            <div class="right">
+                                <ul class="project-address-lists">
+                                    <li>
+                                        <div class="icon">
+                                            <i class="las la-user"></i>
+                                        </div>
+                                        <div class="content">
+                                            <p><strong>Client</strong> - Report coming soon </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="las la-calendar"></i>
+                                        </div>
+                                        <div class="content">
+                                            <p><strong>Compare</strong> Report coming soon</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="las la-chart-bar"></i>
+                                        </div>
+                                        <div class="content">
+                                            <p><strong>Analysis</strong> - Report coming soon</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="las la-industry"></i>
+                                        </div>
+                                        <div class="content">
+                                            <p><strong>Industry</strong> </p>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+{#                <div class="project-details-hero-wrap">#}
+{#                    <div class="custom-container">#}
+{#                        <div class="project-details-hero-img">#}
+{#                            <img src="/static/assets/imgs/project-detail-hero.png" alt="Project">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+
+                <div class="problem-and-solution-wrap">
+                    <div class="custom-container">
+                        <div class="problem-solution-box">
+                            <h4 class="subtitle common-box">Problem</h4>
+                            <div class="content-box">
+                                <p>{{ method_short_description }}</p>
+                            </div>
+                        </div>
+                        <div class="problem-solution-box">
+                            <h4 class="subtitle common-box">Solution</h4>
+                            <div class="content-box">
+                                <p>{{ method_description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+{#                <div class="project-img-2-col">#}
+{#                    <div class="custom-container">#}
+{#                        <div class="project-img-2-col-box">#}
+{#                            <img src="/static/assets/imgs/project-detail-img-1.png" alt="Project">#}
+{#                        </div>#}
+{#                        <div class="project-img-2-col-box">#}
+{#                            <img src="/static/assets/imgs/project-detail-img-2.png" alt="Project">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+
+{#                <div class="project-details-content-box-2">#}
+{#                    <div class="custom-container">#}
+{#                        <div class="project-details-content-box-2-inner">#}
+{#                            <p>To address this challenge, our approach involved crafting a distinctive brand identity that effectively communicated Vutura Sioma's values of sustainability, innovation, and authenticity. Our team meticulously devised a comprehensive brand strategy centered around creating a visually.#}
+{#                                Our goal was to provide a strong visual language and help BizzBuzz to stand out and get the appealing look & feel which resonates with a target audience and gives a feeling of joy and safety during product usage. Also, we needed to introduce the product to potential users. BizzBuzz is a travel startup born by the collaboration of professionals from tech and banking industries. The company has a strong dev department but the design language was weak and kit-made so that they had a risk of getting lost in the pool of competitors.</p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+
+
+{#                <div class="project-details-hero-wrap">#}
+{#                    <div class="custom-container">#}
+{#                        <div class="project-details-hero-img">#}
+{#                            <img src="/static/assets/imgs/project-detail-img-3.png" alt="Project">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#                <div class="project-details-hero-wrap">#}
+{#                    <div class="custom-container">#}
+{#                        <div class="project-details-hero-img">#}
+{#                            <img src="/static/assets/imgs/project-detail-img-4.png" alt="Project">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#                <div class="project-details-hero-wrap">#}
+{#                    <div class="custom-container">#}
+{#                        <div class="project-details-hero-img">#}
+{#                            <img src="/static/assets/imgs/project-detail-img-5.png" alt="Project">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+            <!-- End Project Detail -->
+
+
+
+
+            <!-- Projects
+            ======================================= -->
+{#            <section class="project-area">#}
+{#                <div class="custom-container">#}
+{#                    <div class="project-header section-header">#}
+{#                        <a href="./projects.html" class="theme-btn common-box">#}
+{#                            <span>#}
+{#                                <span class="normal">Projects <i class="las la-arrow-right"></i></span>#}
+{#                                <span class="hover">Projects <i class="las la-arrow-right"></i></span>#}
+{#                            </span>#}
+{#                        </a>#}
+{#                        <div class="animation-texts-wrap">#}
+{#                            <div class="animation-text-inner">#}
+{#                                <ul>#}
+{#                                    <li>⌘ It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{##}
+{#                    <div class="project-col-3">#}
+{#                        <div class="project-slider-box">#}
+{#                            <a href="project-detail.html" class="overlay-link"></a>#}
+{#                            <div class="project-img">#}
+{#                                <img src="/static/assets/imgs/project-4.png" alt="Project">#}
+{#                                <span class="badge-year">#}
+{#                                    <span class="badge-inner">#}
+{#                                        <span>2024</span>#}
+{#                                        <span>2024</span>#}
+{#                                    </span>#}
+{#                                </span>#}
+{#                            </div>#}
+{#                            <div class="project-content">#}
+{#                                <h3>Light Play</h3>#}
+{#                                <p>SEO</p>#}
+{#                                <a href="project-detail.html" class="theme-btn common-box">#}
+{#                                    <span>#}
+{#                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="Icon"></span>#}
+{#                                    </span>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="project-slider-box">#}
+{#                            <a href="project-detail.html" class="overlay-link"></a>#}
+{#                            <div class="project-img">#}
+{#                                <img src="/static/assets/imgs/project-5.png" alt="Project">#}
+{#                                <span class="badge-year">#}
+{#                                    <span class="badge-inner">#}
+{#                                        <span>2024</span>#}
+{#                                        <span>2024</span>#}
+{#                                    </span>#}
+{#                                </span>#}
+{#                            </div>#}
+{#                            <div class="project-content">#}
+{#                                <h3>Synthwave Sympony</h3>#}
+{#                                <p>Social Media</p>#}
+{#                                <a href="project-detail.html" class="theme-btn common-box">#}
+{#                                    <span>#}
+{#                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="Icon"></span>#}
+{#                                    </span>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="project-slider-box">#}
+{#                            <a href="project-detail.html" class="overlay-link"></a>#}
+{#                            <div class="project-img">#}
+{#                                <img src="/static/assets/imgs/project-6.png" alt="Project">#}
+{#                                <span class="badge-year">#}
+{#                                    <span class="badge-inner">#}
+{#                                        <span>2024</span>#}
+{#                                        <span>2024</span>#}
+{#                                    </span>#}
+{#                                </span>#}
+{#                            </div>#}
+{#                            <div class="project-content">#}
+{#                                <h3>Mindscapes</h3>#}
+{#                                <p>Robotic Automation</p>#}
+{#                                <a href="project-detail.html" class="theme-btn common-box">#}
+{#                                    <span>#}
+{#                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="Icon"></span>#}
+{#                                    </span>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#            </section>#}
+            <!-- End Projects -->
+
+            
+
+            <!-- Footer
+            ======================================= -->
+            <footer class="footer-area">
+                <div class="left">
+                    <p>&copy; 2024 All rights reserved by <a href="#">Decision-Tools Team</a></p>
+                    <p class="mid"><span class="circle-icon"></span></p>
+                    <a href="{% url 'rank' %}">Test Service</a>
+                </div>
+                <a href="#top" class="backto-top">Scroll to top <i class="las la-arrow-up"></i></a>
+            </footer>
+            <!-- End Footer -->
+
+        </div>
+        </div>
+    </main>
+
+
+    <!-- JQuery
+    ======================================= -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+    <script src="/static/assets/js/jquery-3.7.1.js"></script>
+    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/swiper.min.js"></script>
+    <script src="/static/assets/js/moment.min.js"></script>
+    <script src="/static/assets/js/main.js"></script>
+{#<script>#}
+{#    function sortTable() {#}
+{#        var table, rows, switching, i, x, y, shouldSwitch;#}
+{#        table = document.getElementById("resultTable");#}
+{#        switching = true;#}
+{#        while (switching) {#}
+{#            switching = false;#}
+{#            rows = table.rows;#}
+{#            for (i = 1; i < (rows.length - 1); i++) {#}
+{#                shouldSwitch = false;#}
+{#                x = parseInt(rows[i].getElementsByTagName("td")[1].innerText); // Get the "Rank" value of the current row#}
+{#                y = parseInt(rows[i + 1].getElementsByTagName("td")[1].innerText); // Get the "Rank" value of the next row#}
+{#                if (x > y) {#}
+{#                    shouldSwitch = true;#}
+{#                    break;#}
+{#                }#}
+{#            }#}
+{#            if (shouldSwitch) {#}
+{#                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);#}
+{#                switching = true;#}
+{#            }#}
+{#        }#}
+{#    }#}
+{#    // Call the sortTable function when the page is loaded#}
+{#    window.onload = function() {#}
+{#        sortTable();#}
+{#    };#}
+{#</script>#}
 <script>
-    document.getElementById('calculateButton').addEventListener('click', function() {
-    // Get the selected method
-    var selectedMethod = document.querySelector('input[name="method"]:checked').value;
+    // Get the scores from the table
+var scores = Array.from(document.querySelectorAll('#resultTable tbody td:nth-child(3)')).map(td => parseFloat(td.textContent));
 
-    // Send AJAX request to the server
-    fetch('/calculate/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken')
-        },
-        body: JSON.stringify({ method: selectedMethod })
-    })
-    .then(response => {
-        if (response.ok) {
-            console.log('Calculation successful');
-        } else {
-            console.error('Failed to perform calculation');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+// Sort the scores in descending order
+var sortedScores = scores.slice().sort((a, b) => b - a);
+
+// Assign ranks based on the sorted scores
+var rankMap = {};
+sortedScores.forEach((score, index) => {
+    rankMap[score] = index + 1;
 });
 
+// Update the rank column in the table
+var rankCells = document.querySelectorAll('#resultTable tbody td:nth-child(2)');
+rankCells.forEach(cell => {
+    var score = parseFloat(cell.nextElementSibling.textContent);
+    var rank = rankMap[score];
+    cell.textContent = rank;
+});
 </script>
+
+
 </body>
+
 </html>

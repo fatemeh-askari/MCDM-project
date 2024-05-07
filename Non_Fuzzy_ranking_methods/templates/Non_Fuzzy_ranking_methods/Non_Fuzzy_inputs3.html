@@ -46,10 +46,10 @@
                 <div class="sidebar-top">
                     <div class="sidebar-logo">
                         <div class="left">
-                            <a href="{% url 'home' %}" class="logo-img">
-                                <img src="/static/assets/imgs/img-hero.png" alt="Logo">
+                            <a href="./index.html" class="logo-img">
+                                <img src="/static/assets/imgs/logo.svg" alt="Logo">
                             </a>
-                            <a href="{% url 'home' %}" class="logo-text">Decision Tools</a>
+                            <a href="./index.html" class="logo-text">STAG</a>
                         </div>
                         <div class="right">
                             <span id="current-time"></span>
@@ -60,7 +60,7 @@
                     <div class="sidebar-me">
                         <div class="sidebar-me-inner">
                             <div class="img-box">
-                                <img src="/static/assets/imgs/img-hero.png" alt="Me">
+                                <img src="/static/assets/imgs/me.png" alt="Me">
                             </div>
                             <div class="content">
                                 <h3>David Henderson</h3>
@@ -73,33 +73,33 @@
                     <div class="sidebar-menu">
                         <nav class="menu-lists">
                             <ul>
+                                <li>
+                                    <a href="./index.html"><span class="icon"><i class="ph-duotone ph-house"></i></span> <span class="title">Home</span></a>
+                                </li>
+                                <li>
+                                    <a href="./projects.html"><span class="icon"><i class="ph-duotone ph-squares-four"></i></span> <span class="title">Projects</span></a>
+                                </li>
+                                <li>
+                                    <a href="./about.html"><span class="icon"><i class="ph-duotone ph-fingerprint"></i></span> <span class="title">About</span></a>
+                                </li>
+                                <li>
+                                    <a href="./gallery.html"><span class="icon"><i class="ph-duotone ph-camera"></i></span> <span class="title">Gallery</span></a>
+                                </li>
                                 <li class="active-menu">
-                                    <a href="{% url 'home' %}"><span class="icon"><i class="ph-duotone ph-house"></i></span> <span class="title">Home</span></a>
+                                    <a href="./contact.html"><span class="icon"><i class="ph-duotone ph-paperclip"></i></span> <span class="title">Contact</span></a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'rank' %}"><span class="icon"><i class="ph-duotone ph-squares-four"></i></span> <span class="title">Projects</span></a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'rank' %}"><span class="icon"><i class="ph-duotone ph-fingerprint"></i></span> <span class="title">About</span></a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'rank' %}"><span class="icon"><i class="las la-chart-bar"></i></span> <span class="title">Tools</span></a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'contact' %}"><span class="icon"><i class="ph-duotone ph-paperclip"></i></span> <span class="title">Contact</span></a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'rank' %}"><span class="icon"><i class="ph-duotone ph-swatches"></i></span> <span class="title">Blog</span></a>
+                                    <a href="./blog.html"><span class="icon"><i class="ph-duotone ph-swatches"></i></span> <span class="title">Blog</span></a>
                                 </li>
                             </ul>
                         </nav>
                         <div class="responsive-mode sidebar-bottom">
                             <div class="social-link-wrap">
                                 <ul class="social-links">
-                                    <li><a><i class="lab la-github"></i></a></li>
-                                    <li><a><i class="lab la-xing"></i></a></li>
-                                    <li><a><i class="lab la-instagram"></i></a></li>
-                                    <li><a><i class="lab la-youtube"></i></a></li>
+                                    <li><a href="https://dribbble.com/"><i class="lab la-dribbble"></i></a></li>
+                                    <li><a href="https://twitter.com"><i class="lab la-xing"></i></a></li>
+                                    <li><a href="https://instagram.com"><i class="lab la-instagram"></i></a></li>
+                                    <li><a href="https://youtube.com"><i class="lab la-youtube"></i></a></li>
                                 </ul>
                             </div>
                             <p class="copyright-text">
@@ -137,58 +137,58 @@
 
             <!-- Newsletter
             ======================================= -->
-{#            <section class="newsletter-area">#}
-{#                <div class="custom-container">#}
-{#                    <div class="newsletter-header section-header">#}
-{#                        <h4 class="common-box subtitle">#}
-{#                            Stay up to date#}
-{#                        </h4>#}
-{#                        <div class="animation-texts-wrap">#}
-{#                            <div class="animation-text-inner">#}
-{#                                <ul>#}
-{#                                    <li>⌘ It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
-{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
-{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
-{#                                </ul>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                    <form action="assets/mail/subscribe.php" method="POST" id="subscribe-form">#}
-{#                        <div class="newsletter-box">#}
-{#                            <input type="email" name="email" placeholder="Your email"> <!-- Added name attribute -->#}
-{#                            <button type="submit">Book an appointment with me</button>#}
-{#                        </div>#}
-{#                        <p class="text-base text-gray-400" style="margin-top: 12px;" id="result1"></p>#}
-{#                    </form>#}
-{##}
-{##}
-{#                    <div class="project-experience-wrap">#}
-{#                        <div class="project-experience">#}
-{#                            <h2>12+</h2>#}
-{#                            <p>Years of experience</p>#}
-{#                            <div class="icon">#}
-{#                                <img src="/static/assets/imgs/leaf.png" alt="icon">#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="project-experience">#}
-{#                            <h2>100+</h2>#}
-{#                            <p>Completed Projects</p>#}
-{#                            <div class="icon">#}
-{#                                <img src="/static/assets/imgs/tree-1.png" alt="icon">#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="project-experience">#}
-{#                            <h2>$16M</h2>#}
-{#                            <p>Partners Raised</p>#}
-{#                            <div class="icon">#}
-{#                                <img src="/static/assets/imgs/tree-2.png" alt="icon">#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{#            </section>#}
+            <section class="newsletter-area">
+                <div class="custom-container">
+                    <div class="newsletter-header section-header">
+                        <h4 class="common-box subtitle">
+                            Stay up to date
+                        </h4>
+                        <div class="animation-texts-wrap">
+                            <div class="animation-text-inner">
+                                <ul>
+                                    <li>⌘ It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>
+                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>
+                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form action="assets/mail/subscribe.php" method="POST" id="subscribe-form">
+                        <div class="newsletter-box">
+                            <input type="email" name="email" placeholder="Your email"> <!-- Added name attribute -->
+                            <button type="submit">Book an appointment with me</button>
+                        </div>
+                        <p class="text-base text-gray-400" style="margin-top: 12px;" id="result1"></p>
+                    </form>
+
+
+                    <div class="project-experience-wrap">
+                        <div class="project-experience">
+                            <h2>12+</h2>
+                            <p>Years of experience</p>
+                            <div class="icon">
+                                <img src="/static/assets/imgs/leaf.png" alt="icon">
+                            </div>
+                        </div>
+                        <div class="project-experience">
+                            <h2>100+</h2>
+                            <p>Completed Projects</p>
+                            <div class="icon">
+                                <img src="/static/assets/imgs/tree-1.png" alt="icon">
+                            </div>
+                        </div>
+                        <div class="project-experience">
+                            <h2>$16M</h2>
+                            <p>Partners Raised</p>
+                            <div class="icon">
+                                <img src="/static/assets/imgs/tree-2.png" alt="icon">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
             <!-- End Newsletter -->
 
 
@@ -197,17 +197,14 @@
             <section class="contact-area">
                 <div class="custom-container">
                     <div class="contact-header section-header">
-                        <h4 class="subtitle common-box">Methods</h4>
-
-
-
+                        <h4 class="subtitle common-box">Contact</h4>
 
                         <div class="animation-texts-wrap">
                             <div class="animation-text-inner">
                                 <ul>
-                                    <li>⌘ ARAS, Borda, CoCoSo, CODAS, Copeland, COPRAS, CRADIS, EDAS, GRA, MABAC, MACBETH ⌘</li>
-                                    <li>MAIRCA, MARA, MARCOS, MOORA, MOOSRA, OCRA, ORESTE, PIV, PSI, REGIME, ROV ⌘</li>
-                                    <li>SAW, TODIM, TOPSIS, WSM, WPM, WASPAS, Simple WISP, WISP, ARAS, Borda, CoCoSo, CODAS, Copeland ⌘</li>
+                                    <li>⌘ It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>
+                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>
+                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>
                                 </ul>
                             </div>
                         </div>
@@ -215,37 +212,72 @@
 
                     <div class="contact-inner">
                         <div class="contact-form">
-                            <form id="requestForm" method="post">
-                                {% csrf_token %}
-                                <!-- Method selection field -->
-                                <div class="form-group form-group-name-method">
-                                    {{ method_form.as_p }}
-                                </div>
-                                <!-- Indicator fields -->
-                                <div id="indicatorFields" class="form-group-indicator indicator-sec">
-                                    <div class="indicator-group form-group-hyper-method">
-                                        <input type="text" name="indicators-name" placeholder="Indicator Name" required>
-                                        <select name="indicators-type" required>
-                                            <option value="Positive">Positive</option>
-                                            <option value="Negative">Negative</option>
-                                        </select>
-                                        <input type="number" name="indicators-weight" placeholder="Weight" step="any" required>
-                                        <div class="error-message" id="indicatorNameErrorMessage" style="display: none;"></div>
-                                    </div>
-                                </div>
-                                <button type="button" onclick="addIndicatorField()" style="margin-top: 1.5rem">Add Indicator</button>
+                            <form id="requestForm" action="" method="POST">
+                            {% csrf_token %}
 
-                                <!-- Choice fields -->
-                                <div id="choiceFields" class="form-group-indicator indicator-sec" style="margin-top: 2rem">
-                                    <div class="choice-group">
-                                        <input type="text" name="choices-name" placeholder="Choice Name" required>
-                                        <div class="error-message" id="choiceNameErrorMessage" style="display: none;"></div>
-                                    </div>
+                                <div class="form-group-name-method">
+                                    <label for="{{ method_form.name.id_for_label }}">Method Name :</label>
+                                    <select multiple class="form-control" id="{{ method_form.name.id_for_label }}">
+                                        {% for method_choice in method_form.fields.name.choices %}
+                                            <option value="{{ method_choice.0 }}">{{ method_choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
                                 </div>
-                                <button type="button" onclick="addChoiceField()" style="margin-top: 1.5rem; margin-bottom: 2rem">Add Choice</button>
+                                <div class="form-group-hyper-method">
+                                    <label for="id_method.hyperparameter_value">Hyperparameter (optional) :</label>
+                                    {{ method_form.hyperparameter_value }}
+                                </div>
 
-                                <div class="error-message" id="validationErrorMessage" style="display: none; margin-bottom: 0.75rem; font-size: 13px">Please add at least two indicators and two choices.</div>
+                            <div class="indicator-sec">
+{#                                <div class="form-group-indicator">#}
+{#                                    <label for="id_indicator_name">Indicator Name:</label>#}
+{#                                    <input type="text" id="id_indicator_name" name="indicator_name" value="{{ indicator_form.instance.name }}" required>#}
+{#                                </div>#}
+{#                                <div class="form-group-indicator">#}
+{#                                    <label for="id_indicator_weight">Indicator weight:</label>#}
+{#                                    <input type="number" id="id_indicator_weight" name="indicator_weight" value="{{ indicator_form.instance.weight }}" required>#}
+{#                                </div>#}
+{#                            <div class="form-group-indicator">#}
+{#                                <label for="{{ indicator_form.type.id_for_label }}">Type :</label>#}
+{#                                <select multiple class="form-control" id="{{ indicator_form.type.id_for_label }}">#}
+{#                                    <option value="Positive">Positive</option>#}
+{#                                    <option value="Negative">Negative</option>#}
+{#                                </select>#}
+                                <div id="indicatorFields" class="form-group-indicator">
+        <div class="indicator-group">
+            <input type="text" name="indicators-name" placeholder="Indicator Name" required>
+            <select name="indicators-type" required>
+                <option value="Positive">Positive</option>
+                <option value="Negative">Negative</option>
+            </select>
+            <input type="number" name="indicators-weight" placeholder="Weight" step="any" required>
+            <div class="error-message" id="indicatorNameErrorMessage" style="display: none;"></div>
+        </div>
+    </div>
+                            </div>
+
+
+                            <button type="button" onclick="addIndicatorField()">Add Indicator</button>
+
+                            <div id="choiceFields">
+        <div class="choice-group">
+            <input type="text" name="choices-name" placeholder="Choice Name" required>
+            <div class="error-message" id="choiceNameErrorMessage" style="display: none;"></div>
+        </div>
+    </div>
+                            <div class="error-message" id="indicatorNameErrorMessage" style="display: none;"></div>
+    <button type="button" onclick="addChoiceField()">Add Choice</button>
+
+{#                                <input type="hidden" name="access_key" value="0ea6f02e-35e1-4bc8-801a-f700e7c5a95c">#}
+{#                                <input type="hidden" name="subject">#}
+
+
+
+{#                                <input type="text" name="name" placeholder="Name">#}
+{#                                <input type="email" placeholder="Email" name="email">#}
+{#                                <textarea name="message" id="message" placeholder="Message"></textarea>#}
                                 <button type="submit">Submit</button>
+                                <p class="text-base text-gray-400" style="margin-top: 12px;" id="result"></p>
                             </form>
                         </div>
 
@@ -259,9 +291,9 @@
                                         <i class="lar la-map"></i>
                                     </div>
                                     <div class="content">
-                                        <h3>Email</h3>
-                                        <p style="margin-bottom: 8px"><a href="mailto:magicbytesinfo@mail.com">magicbytesinfo@mail.com</a></p>
-                                        <p>Rest assured, we regularly monitor your emails.</p>
+                                        <h3>Visit Me</h3>
+                                        <p>16/9, Down Street, Edinburgth <br>
+                                            United Kingdom</p>
                                     </div>
                                 </li>
                                 <li>
@@ -271,9 +303,9 @@
                                     <div class="content">
                                         <h3>Contact Info</h3>
                                         <p>
-                                            <a href="tel:+989178109053">+98 917 810 9053</a>
+                                            <a href="tel:+1284789900">+1-2847-899,</a> <a href="tel:+1284789900">+1-2847-899</a>
                                         </p>
-                                        <p>We're available from 9 AM to 7 PM to respond promptly.</p>
+                                        <p><a href="mailto:WordPressRiverstudio@mail.com">yourcompanyemail@mail.com</a></p>
                                     </div>
                                 </li>
                             </ul>
@@ -289,9 +321,10 @@
             ======================================= -->
             <footer class="footer-area">
                 <div class="left">
-                    <p>&copy; 2024 All rights reserved by <a href="#">Decision-Tools Team</a></p>
-                    <p class="mid"><span class="circle-icon"></span></p>
-                    <a href="{% url 'rank' %}">Test Service</a>
+                    <p>&copy; 2024 All rights reserved by <a href="https://themeforest.net/user/wordpressriver/portfolio">WordPressRiver Themes</a></p>
+                    <p class="mid"><span class="circle-icon"></span>Template by <a href="https://themeforest.net/user/wordpressriver/portfolio">WordPressRiver</a><span
+                            class="circle-icon"></span></p>
+                    <a href="#">Buy Template</a>
                 </div>
                 <a href="#top" class="backto-top">Scroll to top <i class="las la-arrow-up"></i></a>
             </footer>
@@ -461,19 +494,6 @@
         if (!checkNumberOfIndicatorsAndChoices()) {
             event.preventDefault(); // Prevent form submission
             return;
-        }
-    });
-</script>
-
-<script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        // Find the label element by its "for" attribute
-        const label = document.querySelector('label[for="id_method-hyperparameter_value"]');
-
-        // Check if the label exists
-        if (label) {
-            // Modify the label text
-            label.innerHTML = 'Hyperparameter (optional)  <a href="#" style="color: var(--primary)">Learn more</a>';
         }
     });
 </script>

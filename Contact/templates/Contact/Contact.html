@@ -11,7 +11,7 @@
     <link rel="icon" type="image/x-icon" href="/static/assets/imgs/favicon.svg">
 
     <!-- ===== Title ===== -->
-    <title>Stag - Personal Portfolio HTML5 Template</title>
+    <title>Contact</title>
 
     <!-- ===== LineAwesome ===== -->
     <link rel="stylesheet"
@@ -24,16 +24,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,100;1,9..40,200&display=swap"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
 
     <!-- ===== Stylesheet ===== -->
     <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/assets/css/swiper.min.css">
     <link rel="stylesheet" href="/static/assets/css/style.css">
     <link rel="stylesheet" href="/static/assets/css/responsive.css">
-    <link rel="stylesheet" href="/static/assets/css/customize%20style.css">
-
 </head>
+
 <body>
 
     <main class="contact-page" id="top">
@@ -196,98 +194,62 @@
             <section class="contact-area">
                 <div class="custom-container">
                     <div class="contact-header section-header">
-{#                        <h4 class="subtitle common-box">Contact</h4>#}
-                        <input type="hidden" id="requestId" value="{{ method.pk }}">
-                            <button type="button" id="submitButton">Submit</button>
+                        <h4 class="subtitle common-box">Contact</h4>
 
                         <div class="animation-texts-wrap">
                             <div class="animation-text-inner">
                                 <ul>
-                                    <li>⌘ Enter the data related to indicators and options in the table below ⌘</li>
-                                    <li>You can copy data from Excel, CVS, etc. formats ⌘</li>
-                                    <li>After entering all data cells, press the submit button ⌘</li>
+                                    <li>⌘ It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>
+                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>
+                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
                     <div class="contact-inner">
-                        <div class="contact-form table-container" >
+                        <div class="contact-form">
+                            <form id="contactForm" method="post" action="{% url 'contact' %}">
+                                {% csrf_token %}
 
-                           <div id="spreadsheet"></div>
-
-
-                            <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
-                            <script>
-                                // Initialize Handsontable with your data
-                                var container = document.getElementById('spreadsheet');
-
-                                // Extract indicator names and choice names from Django context variables
-                                var indicators = {{ indicators_json|safe }};
-                                var choices = {{ choices_json|safe }};
-
-                                // Initialize data array with headers
-                                var data = [[''].concat(indicators.map(indicator => indicator.name))]; // Extract indicator names
-                                choices.forEach(function(choice) {
-                                    data.push([choice.name].concat(new Array(indicators.length).fill(''))); // Initialize rows with choice names and empty data cells
-                                });
-
-                                // Create Handsontable instance
-                                var hot = new Handsontable(container, {
-                                    data: data,
-                                    rowHeaders: true,
-                                    colHeaders: true,
-                                    contextMenu: false,
-                                    manualColumnResize: false,
-                                    manualRowResize: false,
-                                    allowEmpty: false, // Prevent selecting empty cells
-                                    cells: function(row, col, prop) {
-                                        var cellProperties = {};
-                                        // Set the first row and column as read-only and non-selectable
-                                        if (row === 0 || col === 0) {
-                                            cellProperties.readOnly = true;
-                                            cellProperties.renderer = function(instance, td, row, col, prop, value, cellProperties) {
-                                                Handsontable.renderers.TextRenderer.apply(this, arguments);
-                                                td.style.background = '#0a1e2d'; // Set background color for non-selectable cells
-                                                td.style.color = 'white'; // Set text color for non-selectable cells
-                                            };
-                                        }
-                                        return cellProperties;
-                                    }
-                                });
-
-                            </script>
+                                <input name="name" id="name" type="text" placeholder="Name">
+                                <input name="email" id="email" type="email" placeholder="Email">
+                                <input name="subject" id="subject" type="text" placeholder="Subject">
+                                <textarea name="message" id="comments" placeholder="Message"></textarea>
+                                <button type="submit">Submit</button>
+                                <p class="text-base text-gray-400" style="margin-top: 12px;" id="result"></p>
+                            </form>
                         </div>
 
-{#                        <div class="contact-infos">#}
-{#                            <h4 class="subtitle common-box">#}
-{#                                Address#}
-{#                            </h4>#}
-{#                            <ul>#}
-{#                                <li>#}
-{#                                    <div class="icon">#}
-{#                                        <i class="lar la-map"></i>#}
-{#                                    </div>#}
-{#                                    <div class="content">#}
-{#                                        <h3>Visit Me</h3>#}
-{#                                        <p>16/9, Down Street, Edinburgth <br>#}
-{#                                            United Kingdom </p>#}
-{#                                    </div>#}
-{#                                </li>#}
-{#                                <li>#}
-{#                                    <div class="icon">#}
-{#                                         <i class="las la-headphones"></i>#}
-{#                                    </div>#}
-{#                                    <div class="content">#}
-{#                                        <h3>Contact Info</h3>#}
-{#                                        <p>#}
-{#                                            <a href="tel:+1284789900">+1-2847-899,</a> <a href="tel:+1284789900">+1-2847-899</a>#}
-{#                                        </p>#}
-{#                                        <p><a href="mailto:WordPressRiverstudio@mail.com">yourcompanyemail@mail.com</a></p>#}
-{#                                    </div>#}
-{#                                </li>#}
-{#                            </ul>#}
-{#                        </div>#}
+                        <div class="contact-infos">
+                            <h4 class="subtitle common-box">
+                                Address
+                            </h4>
+                            <ul>
+                                <li>
+                                    <div class="icon">
+                                        <i class="lar la-map"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Visit Me</h3>
+                                        <p>16/9, Down Street, Edinburgth <br>
+                                            United Kingdom</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                         <i class="las la-headphones"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Contact Info</h3>
+                                        <p>
+                                            <a href="tel:+1284789900">+1-2847-899,</a> <a href="tel:+1284789900">+1-2847-899</a>
+                                        </p>
+                                        <p><a href="mailto:WordPressRiverstudio@mail.com">yourcompanyemail@mail.com</a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
@@ -322,66 +284,6 @@
     <script src="/static/assets/js/ajaxform.js"></script>
     <script src="/static/assets/js/subscribe-form.js"></script>
     <script src="/static/assets/js/main.js"></script>
-
-<script>
-    document.getElementById('submitButton').addEventListener('click', function() {
-    // Collect and send the matrix data to the server
-    saveMatrixData();
-});
-
-function saveMatrixData() {
-    // Collect matrix data (you can use Handsontable's getData() method)
-    var matrixData = hot.getData();
-
-    // Extract only the numerical values from the matrix
-    var numericData = matrixData.slice(1).map(row => row.slice(1)); // Exclude the first row and first column
-
-    // Retrieve the request ID from the hidden input field
-    var requestId = document.getElementById('requestId').value;
-
-    // AJAX request to send the matrix data to the server
-    fetch('/rank-methods/save_matrix_data/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken')  // You'll need to define the getCookie() function
-        },
-        body: JSON.stringify({
-            matrix_data: numericData, // Send only the numeric data
-            request_id: requestId  // Pass the request ID here
-        })
-    })
-    .then(response => {
-        if (response.ok) {
-            // Redirect to the results page
-            window.location.href = '/rank-methods/results/' + requestId;
-        } else {
-            console.error('Failed to save matrix data');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
-
-
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            // Check if the cookie name matches the specified name
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                // Extract and return the cookie value
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-</script>
 </body>
 
 </html>

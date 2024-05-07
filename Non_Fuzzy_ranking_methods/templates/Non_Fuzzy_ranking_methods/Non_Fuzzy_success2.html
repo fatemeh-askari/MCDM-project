@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success Page</title>
+    <!-- Include Handsontable CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+<style>
+    .hot-display-license-info{
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <h1>Data Confirmation</h1>
+    <div id="spreadsheet"></div>
+
+    <!-- Include Handsontable JS -->
+    <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+    <script>
+        // Initialize Handsontable with your data
+        var container = document.getElementById('spreadsheet');
+
+        // Extract indicator names and choice names from Django context variables
+        var indicators = {{ indicators_json|safe }};
+        var choices = {{ choices_json|safe }};
+
+        // Initialize data array with headers
+        var data = [[''].concat(indicators.map(indicator => indicator.name))]; // Extract indicator names
+        choices.forEach(function(choice) {
+            data.push([choice.name].concat(new Array(indicators.length).fill(''))); // Initialize rows with choice names and empty data cells
+        });
+
+        // Create Handsontable instance
+        var hot = new Handsontable(container, {
+            data: data,
+            rowHeaders: true,
+            colHeaders: true,
+            contextMenu: true,
+            manualColumnResize: true,
+            manualRowResize: true,
+            fillHandle: false, // Disable auto-fill handle
+            // Add more configurations as needed
+        });
+    </script>
+
+    <h1>Success</h1>
+    <p>Request ID: {{ method.pk }}</p>
+    <p>Selected Method: {{ method.name }}</p>
+    <p>Selected Indicators:</p>
+    <ul>
+        {% for indicator in indicators %}
+            <li>
+                <ul>
+                    <li>Name: {{ indicator.name }}</li>
+                    <li>Type: {{ indicator.type }}</li>
+                    <li>Weight: {{ indicator.weight }}</li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        {% for choice in choices %}
+            <li>
+                <ul>
+                    <li>Name: {{ choice.name }}</li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+<input type="hidden" id="requestId" value="{{ method.pk }}">
+<button type="button" id="submitButton">Submit</button>
+
+
+
+{#<script>#}
+{#document.getElementById('submitButton').addEventListener('click', function() {#}
+{#    // Collect and send the matrix data to the server#}
+{#    saveMatrixData();#}
+{#});#}
+{##}
+{#function saveMatrixData() {#}
+{#    // Collect matrix data (you can use Handsontable's getData() method)#}
+{#    var matrixData = hot.getData();#}
+{##}
+{#    // AJAX request to send the matrix data to the server#}
+{#    fetch('/save_matrix_data/', {#}
+{#        method: 'POST',#}
+{#        headers: {#}
+{#            'Content-Type': 'application/json',#}
+{#            'X-CSRFToken': getCookie('csrftoken')  // You'll need to define the getCookie() function#}
+{#        },#}
+{#        body: JSON.stringify({#}
+{#            matrix_data: matrixData,#}
+{#            request_id: '{{ method.pk }}'  // Pass the request ID here#}
+{#        })#}
+{#    })#}
+{#    .then(response => {#}
+{#        if (response.ok) {#}
+{#            // Redirect to the results page#}
+{##}
+{#            window.location.href = '/results/';#}
+{#        } else {#}
+{#            console.error('Failed to save matrix data');#}
+{#        }#}
+{#    })#}
+{#    .catch(error => {#}
+{#        console.error('Error:', error);#}
+{#    });#}
+{#}#}
+{##}
+{#function getCookie(name) {#}
+{#    var cookieValue = null;#}
+{#    if (document.cookie && document.cookie !== '') {#}
+{#        var cookies = document.cookie.split(';');#}
+{#        for (var i = 0; i < cookies.length; i++) {#}
+{#            var cookie = cookies[i].trim();#}
+{#            // Check if the cookie name matches the specified name#}
+{#            if (cookie.substring(0, name.length + 1) === (name + '=')) {#}
+{#                // Extract and return the cookie value#}
+{#                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));#}
+{#                break;#}
+{#            }#}
+{#        }#}
+{#    }#}
+{#    return cookieValue;#}
+{#}#}
+{#</script>#}
+
+
+
+<script>
+    document.getElementById('submitButton').addEventListener('click', function() {
+    // Collect and send the matrix data to the server
+    saveMatrixData();
+});
+
+function saveMatrixData() {
+    // Collect matrix data (you can use Handsontable's getData() method)
+    var matrixData = hot.getData();
+
+    // Extract only the numerical values from the matrix
+    var numericData = matrixData.slice(1).map(row => row.slice(1)); // Exclude the first row and first column
+
+    // Retrieve the request ID from the hidden input field
+    var requestId = document.getElementById('requestId').value;
+
+    // AJAX request to send the matrix data to the server
+    fetch('/rank-methods/save_matrix_data/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')  // You'll need to define the getCookie() function
+        },
+        body: JSON.stringify({
+            matrix_data: numericData, // Send only the numeric data
+            request_id: requestId  // Pass the request ID here
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Redirect to the results page
+            window.location.href = '/rank-methods/results/' + requestId;
+        } else {
+            console.error('Failed to save matrix data');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Check if the cookie name matches the specified name
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                // Extract and return the cookie value
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
+</body>
+</html>
+

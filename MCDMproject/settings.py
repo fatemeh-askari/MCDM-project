@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Home',
     'Non_Fuzzy_ranking_methods',
+    'Blog',
+    'Contact',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,283 @@
+
+.form-group-name-method select {
+        /* Your existing styles */
+        background: linear-gradient(180deg, rgba(0, 163, 255, 0.04) 0%, rgba(0, 163, 255, 0.02) 100%);
+        border: .75px solid rgba(252, 252, 252, 0.05);
+        /* Additional styles for the scrollbar */
+        scrollbar-width: thin; /* "thin", "auto", or "none" */
+        color: #8E8E8E;
+        font-size: 11px;
+        margin-bottom: 10px;
+    margin-top: 5px;
+        padding: 5px;
+    margin-left: 15px;
+    }
+
+
+
+
+    .form-group-name-method select:focus {
+        outline: none;
+    box-shadow: none;
+        background: linear-gradient(180deg, rgba(0, 163, 255, 0.04) 0%, rgba(0, 163, 255, 0.02) 100%);
+    border-color: rgb(14 133 198 / 30%);
+        color: #8E8E8E;
+    }
+
+    .form-group-name-method select option {
+        margin-bottom: 10px;
+        transition: background-color 0.2s ease;
+        padding: 5px;
+        background-color: #061d28;
+    }
+
+    .form-group-name-method select option:hover {
+    background: rgb(14 113 198 / 30%);
+        color: #8E8E8E;
+
+}
+
+    .form-group-name-method select option:checked {
+    background: rgb(14 113 198 / 30%);
+        color: #8E8E8E;
+
+}
+
+    /* Style for WebKit-based browsers (Chrome, Safari) */
+    .form-group-name-method select::-webkit-scrollbar {
+        width: 5px; /* Width of the scrollbar */
+    }
+
+    /* Track (the area on which the thumb slides) */
+    .form-group-name-method select::-webkit-scrollbar-track {
+        background: linear-gradient(180deg, rgba(0, 163, 255, 0.04) 0%, rgba(0, 163, 255, 0.02) 100%);
+    }
+
+    /* Thumb (the draggable scrolling handle) */
+    .form-group-name-method select::-webkit-scrollbar-thumb {
+        background: var(--primary); /* Color of the thumb */
+        border-radius: 5px; /* Radius of the thumb */
+    }
+
+    /* Handle on hover */
+    .form-group-name-method select::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Color of the thumb on hover */
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Remove default appearance */
+    appearance: none;
+    margin: 0; /* Optional: Remove space between number input and its border */
+}
+
+    .form-group-hyper-method input {
+        border-radius: 3px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .form-group p label {
+        margin-bottom: 5px;
+
+    }
+
+    .indicator-sec {
+        background: linear-gradient(-89.99999881140911deg, rgba(0, 170, 255, .04) 0%, rgba(0, 170, 255, .019999999552965164) 100%);
+    }
+
+    .form-group-indicator {
+        padding: 10px;
+    }
+
+
+    .form-group-indicator select {
+        /* Your existing styles */
+        background: linear-gradient(180deg, rgba(0, 163, 255, 0.04) 0%, rgba(0, 163, 255, 0.02) 100%);
+        border: .75px solid rgba(252, 252, 252, 0.05);
+        /* Additional styles for the scrollbar */
+        scrollbar-width: thin; /* "thin", "auto", or "none" */
+        color: #8E8E8E;
+        font-size: 11px;
+        margin-bottom: 30px;
+    margin-top: 10px;
+        padding: 10px;
+    }
+
+    .form-group-indicator select:focus {
+        outline: none;
+    box-shadow: none;
+        background: linear-gradient(180deg, rgba(0, 163, 255, 0.04) 0%, rgba(0, 163, 255, 0.02) 100%);
+    border-color: rgb(14 133 198 / 30%);
+        color: #8E8E8E;
+    }
+
+    .form-group-indicator select option {
+        margin-bottom: 10px;
+        transition: background-color 0.2s ease;
+        padding: 3px;
+    }
+
+    .form-group-indicator select option:hover {
+    background: rgb(14 113 198 / 30%);
+        color: #8E8E8E;
+
+}
+
+    .form-group-indicator select option:checked {
+    background: rgb(14 113 198 / 30%);
+        color: #8E8E8E;
+
+}
+
+    /* Style for WebKit-based browsers (Chrome, Safari) */
+    .form-group-indicator select::-webkit-scrollbar {
+        width: 5px; /* Width of the scrollbar */
+    }
+
+    /* Track (the area on which the thumb slides) */
+    .form-group-indicator select::-webkit-scrollbar-track {
+        background: linear-gradient(180deg, rgba(0, 163, 255, 0.04) 0%, rgba(0, 163, 255, 0.02) 100%);
+    }
+
+    /* Thumb (the draggable scrolling handle) */
+    .form-group-indicator select::-webkit-scrollbar-thumb {
+        background: var(--primary); /* Color of the thumb */
+        border-radius: 5px; /* Radius of the thumb */
+    }
+
+    /* Handle on hover */
+    .form-group-indicator select::-webkit-scrollbar-thumb:hover {
+        background-color: #555; /* Color of the thumb on hover */
+    }
+
+    .form-group-indicator select option {
+        background-color: #061d28;
+    }
+
+    .indicator-sec {
+    -webkit-backdrop-filter: blur(26.25249671936035px);
+    backdrop-filter: blur(26.25249671936035px);
+    background: linear-gradient(.0000026635723315848736deg,rgba(0,170,255,.05) 0%,rgba(182,102,195,.05000000074505806) 100%);
+}
+
+
+    /*matrix*/
+.hot-display-license-info{
+        display: none;
+    }
+
+.handsontable td {
+     background-color: #102e46; /* White background color */
+    color: #F9F9F9;
+}
+
+/* Target the first row */
+/* Target the first row */
+.handsontable tbody tr:first-child td {
+    background-color: #0a1e2d;
+    color: white;
+    min-width: 80px;
+    text-align: center;
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 3px;
+}
+
+/* Target the first column */
+.handsontable tbody tr td:nth-child(2) {
+    background-color: #0a1e2d;
+     color: white;
+    min-width: 80px;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 3px;
+}
+
+/* Change the background color of table headers */
+.handsontable th {
+    /* Set the background color to a solid color as fallback */
+    /*background-color: #f0f0f0; !* Light gray background color *!*/
+
+    /* Use a linear gradient as the background image */
+    background-color: #102e46;
+
+    /* Set other styles */
+    border-color: #102e46; /* Light gray border color */
+    color: white; /* Dark text color */
+    display: none;
+
+}
+
+/* Change the border color of table cells */
+.handsontable td, .handsontable th {
+     border: .75px solid rgba(252, 252, 252, 0.05);
+    color: #F9F9F9;
+}
+
+.table-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    max-width: 100%; /* Adjust the maximum width as needed */
+    max-height: calc(90vh); /* Adjust the maximum height as needed */
+    margin-bottom: 0;
+    padding-bottom: 0;
+    /* You may need to adjust the height of the container based on your layout */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: rgba(0, 0, 0, 0.05) rgba(0, 0, 0, 0.01);
+}
+
+/* Optionally hide scrollbar when not needed */
+.table-container::-webkit-scrollbar {
+    display: none;
+    visibility: hidden;
+}
+
+#submitButton {
+    /* overflow: hidden; */
+    font-size: 13px;
+    display: inline-flex;
+    position: relative;
+    color: #F9F9F9;
+    font-weight: 400;
+    letter-spacing: .23px;
+    padding: 12px 20px;
+    flex-direction: column;
+    transition: .5s;
+    margin: 0;
+    border: .75px solid rgb(252 252 252 / 10%);
+    /* background: radial-gradient(51.06382564270137% 51.063825642701374% at 49.9999939127168% 48.93617093320697%,rgba(253,253,253,.05) 0%,rgba(253,253,253,0) 100%); */
+    -webkit-backdrop-filter: blur(26.25249671936035px);
+    backdrop-filter: blur(26.25249671936035px);
+    background: linear-gradient(.0000026635723315848736deg,rgba(0,170,255,.05) 0%,rgba(182,102,195,.05000000074505806) 100%);
+}
+
+
+
+/* result */
+#resultTable thead tr th {
+   border: .75px solid var(--primary);
+    font-size: 12px;
+    padding: 12px;
+    text-align: center;
+    color: #F9F9F9;
+        -webkit-backdrop-filter: blur(26.25249671936035px);
+    backdrop-filter: blur(26.25249671936035px);
+    background: linear-gradient(.0000026635723315848736deg,rgba(0,170,255,.05) 0%,rgba(182,102,195,.05000000074505806) 100%);
+
+}
+
+#resultTable tbody tr td {
+    border: .75px solid var(--primary);
+    font-size: 11px;
+    padding: 12px;
+    text-align: center;
+    color: #F9F9F9;
+}
+
+
+
+
+
+
+

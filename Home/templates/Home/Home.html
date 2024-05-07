@@ -1,10 +1,1122 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ===== Meta ===== -->
     <meta charset="UTF-8">
-    <title>Home</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== Favicon ===== -->
+    <link rel="icon" type="image/x-icon" href="/static/assets/imgs/favicon.svg">
+
+    <!-- ===== Title ===== -->
+    <title>Decision Tools</title>
+
+    <!-- ===== LineAwesome ===== -->
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+
+    <!-- ===== Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,100;1,9..40,200&display=swap" rel="stylesheet">
+
+    <!-- ===== Stylesheet ===== -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/assets/css/swiper.min.css">
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <link rel="stylesheet" href="/static/assets/css/responsive.css">
 </head>
 <body>
- test Home
+
+    <main class="home-page" id="top">
+
+        <!-- Sticky Sidebar
+        ======================================= -->
+        <div class="sticky-sidebar">
+            <div class="sticky-sidebar-inner">
+                <div class="sidebar-top">
+                    <div class="sidebar-logo">
+                        <div class="left">
+                            <a href="{% url 'home' %}" class="logo-img">
+                                <img src="/static/assets/imgs/img-hero.png" alt="Logo">
+                            </a>
+                            <a href="{% url 'home' %}" class="logo-text">Decision Tools</a>
+                        </div>
+                        <div class="right">
+                            <span id="current-time"></span>
+                            <i class="las la-ellipsis-v"></i>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-me">
+                        <div class="sidebar-me-inner">
+                            <div class="img-box">
+                                <img src="/static/assets/imgs/img-hero.png" alt="Me">
+                            </div>
+                            <div class="content">
+                                <h3>David Henderson</h3>
+                                <p>Back End Developer</p>
+                                <span class="location"><i class="ph-duotone ph-map-pin"></i> San francisco</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-menu">
+                        <nav class="menu-lists">
+                            <ul>
+                                <li class="active-menu">
+                                    <a href="{% url 'home' %}"><span class="icon"><i class="ph-duotone ph-house"></i></span> <span class="title">Home</span></a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'rank' %}"><span class="icon"><i class="ph-duotone ph-squares-four"></i></span> <span class="title">Projects</span></a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'rank' %}"><span class="icon"><i class="ph-duotone ph-fingerprint"></i></span> <span class="title">About</span></a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'rank' %}"><span class="icon"><i class="las la-chart-bar"></i></span> <span class="title">Tools</span></a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contact' %}"><span class="icon"><i class="ph-duotone ph-paperclip"></i></span> <span class="title">Contact</span></a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'rank' %}"><span class="icon"><i class="ph-duotone ph-swatches"></i></span> <span class="title">Blog</span></a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="responsive-mode sidebar-bottom">
+                            <div class="social-link-wrap">
+                                <ul class="social-links">
+                                    <li><a><i class="lab la-github"></i></a></li>
+                                    <li><a><i class="lab la-xing"></i></a></li>
+                                    <li><a><i class="lab la-instagram"></i></a></li>
+                                    <li><a><i class="lab la-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                            <p class="copyright-text">
+                                &copy; 2024
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="humberg-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="sidebar-bottom">
+                    <div class="social-link-wrap">
+                        <ul class="social-links">
+                            <li><a href="https://dribbble.com/"><i class="lab la-dribbble"></i></a></li>
+                            <li><a href="https://twitter.com"><i class="lab la-xing"></i></a></li>
+                            <li><a href="https://instagram.com"><i class="lab la-instagram"></i></a></li>
+                            <li><a href="https://youtube.com"><i class="lab la-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                    <p class="copyright-text">
+                        &copy; 2024
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- End Sticky Sidebar -->
+
+
+        <div class="page-content-wrapper">
+
+            <!-- Header
+            ======================================= -->
+            <section class="hero-area">
+                <div class="custom-container">
+                    <div class="custom-row">
+                        <div class="hero-img">
+                            <img src="/static/assets/imgs/img-hero.png" alt="Hero">
+                        </div>
+
+                        <div class="hero-content-right">
+                            <div class="hero-content-top">
+                                <div class="available-link-wrap">
+                                    <a href="#" class="available-link common-box">
+                                        <span class="online-dot"></span>Developing decision making tools
+                                    </a>
+                                </div>
+                                <span class="time common-box">
+                                    <i class="ph ph-clock"></i> <span id="datetime"></span>
+                                </span>
+
+                                <a href="{% url 'contact' %}" class="theme-btn common-box">
+                                    <span>
+                                        <span class="normal">Contact <i class="las la-arrow-right"></i></span>
+                                        <span class="hover">Contact <i class="las la-arrow-right"></i></span>
+                                    </span>
+                                </a>
+                            </div>
+
+                            <div class="hero-content-bottom">
+                                <div class="hero-content common-box">
+                                    <span>Expert decision</span>
+                                    <h1>Decision Tools 👋🏽</h1>
+                                    <p>Streamline complex choices effortlessly and make informed decisions with confidence. "Decision Tools" is a combination of multi-criteria decision-making methods, ideal planning, machine learning and deep neural network.</p>
+                                    <img src="/static/assets/imgs/signeture.svg" alt="Signeture" class="signeture">
+                                </div>
+
+                                <div class="hero-map-wrap">
+                                    <div class="hero-map-top">
+                                        <span class="address common-box">Shiraz city</span>
+                                        <span class="address common-box address-country"><i class="ph-duotone ph-map-pin map-icon"></i> Iran</span>
+                                    </div>
+                                    <div id="hero-map">
+                                        <canvas id="cobe" width="600" height="600"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Header -->
+
+
+            <!-- Project
+            ======================================= -->
+{#            <section class="project-area">#}
+{#                <div class="custom-container">#}
+{#                    <div class="project-header section-header">#}
+{#                        <a href="./project.html" class="theme-btn common-box">#}
+{#                            <span>#}
+{#                                <span class="normal">Projects <i class="las la-arrow-right"></i></span>#}
+{#                                <span class="hover">Projects <i class="las la-arrow-right"></i></span>#}
+{#                            </span>#}
+{#                        </a>#}
+{#                        <div class="animation-texts-wrap">#}
+{#                            <div class="animation-text-inner">#}
+{#                                <ul>#}
+{#                                    <li>⌘ It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <div class="project-slider-action-btn">#}
+{#                            <div class="project-button-prev"><i class="las la-angle-left"></i></div>#}
+{#                            <div class="project-button-next"><i class="las la-angle-right"></i></div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="project-slider-wrapper">#}
+{#                        <div class="swiper project-slider">#}
+{#                            <div class="swiper-wrapper">#}
+{##}
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="project-slide-col-2">#}
+{#                                        <div class="project-slider-box">#}
+{#                                            <a href="project-detail.html" class="overlay-link"></a>#}
+{#                                            <div class="project-img">#}
+{#                                                <img src="/static/assets/imgs/project-1.png" alt="Project">#}
+{#                                                <span class="badge-year">#}
+{#                                                    <span class="badge-inner">#}
+{#                                                        <span>2024</span>#}
+{#                                                        <span>2024</span>#}
+{#                                                    </span>#}
+{#                                                </span>#}
+{#                                            </div>#}
+{#                                            <div class="project-content">#}
+{#                                                <h3>Retro Remix</h3>#}
+{#                                                <p>Ux Design</p>#}
+{#                                                <a href="project-detail.html" class="theme-btn common-box">#}
+{#                                                    <span>#}
+{#                                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="icon"></span>#}
+{#                                                    </span>#}
+{#                                                </a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="project-slider-box">#}
+{#                                            <a href="project-detail.html" class="overlay-link"></a>#}
+{#                                            <div class="project-img">#}
+{#                                                <img src="/static/assets/imgs/project-4.png" alt="Project">#}
+{#                                                <span class="badge-year">#}
+{#                                                    <span class="badge-inner">#}
+{#                                                        <span>2024</span>#}
+{#                                                        <span>2024</span>#}
+{#                                                    </span>#}
+{#                                                </span>#}
+{#                                            </div>#}
+{#                                            <div class="project-content">#}
+{#                                                <h3>Light Play</h3>#}
+{#                                                <p>SEO</p>#}
+{#                                                <a href="project-detail.html" class="theme-btn common-box">#}
+{#                                                    <span>#}
+{#                                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="icon"></span>#}
+{#                                                    </span>#}
+{#                                                </a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="project-slide-col-2">#}
+{#                                        <div class="project-slider-box">#}
+{#                                            <a href="project-detail.html" class="overlay-link"></a>#}
+{#                                            <div class="project-img">#}
+{#                                                <img src="/static/assets/imgs/project-2.png" alt="Project">#}
+{#                                                <span class="badge-year">#}
+{#                                                    <span class="badge-inner">#}
+{#                                                        <span>2024</span>#}
+{#                                                        <span>2024</span>#}
+{#                                                    </span>#}
+{#                                                </span>#}
+{#                                            </div>#}
+{#                                            <div class="project-content">#}
+{#                                                <h3>Mystical Meodows</h3>#}
+{#                                                <p>Web Development</p>#}
+{#                                                <a href="project-detail.html" class="theme-btn common-box">#}
+{#                                                    <span>#}
+{#                                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="icon"></span>#}
+{#                                                    </span>#}
+{#                                                </a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="project-slider-box">#}
+{#                                            <a href="project-detail.html" class="overlay-link"></a>#}
+{#                                            <div class="project-img">#}
+{#                                                <img src="/static/assets/imgs/project-5.png" alt="Project">#}
+{#                                                <span class="badge-year">#}
+{#                                                    <span class="badge-inner">#}
+{#                                                        <span>2024</span>#}
+{#                                                        <span>2024</span>#}
+{#                                                    </span>#}
+{#                                                </span>#}
+{#                                            </div>#}
+{#                                            <div class="project-content">#}
+{#                                                <h3>Synthwave Sympony</h3>#}
+{#                                                <p>Social Media</p>#}
+{#                                                <a href="project-detail.html" class="theme-btn common-box">#}
+{#                                                    <span>#}
+{#                                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="icon"></span>#}
+{#                                                    </span>#}
+{#                                                </a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="project-slide-col-2">#}
+{#                                        <div class="project-slider-box">#}
+{#                                            <a href="project-detail.html" class="overlay-link"></a>#}
+{#                                            <div class="project-img">#}
+{#                                                <img src="/static/assets/imgs/project-3.png" alt="Project">#}
+{#                                                <span class="badge-year">#}
+{#                                                    <span class="badge-inner">#}
+{#                                                        <span>2024</span>#}
+{#                                                        <span>2024</span>#}
+{#                                                    </span>#}
+{#                                                </span>#}
+{#                                            </div>#}
+{#                                            <div class="project-content">#}
+{#                                                <h3>Cybernetic Dreams</h3>#}
+{#                                                <p>Brand Marketing</p>#}
+{#                                                <a href="project-detail.html" class="theme-btn common-box">#}
+{#                                                    <span>#}
+{#                                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="icon"></span>#}
+{#                                                    </span>#}
+{#                                                </a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="project-slider-box">#}
+{#                                            <a href="project-detail.html" class="overlay-link"></a>#}
+{#                                            <div class="project-img">#}
+{#                                                <img src="/static/assets/imgs/project-6.png" alt="Project">#}
+{#                                                <span class="badge-year">#}
+{#                                                    <span class="badge-inner">#}
+{#                                                        <span>2024</span>#}
+{#                                                        <span>2024</span>#}
+{#                                                    </span>#}
+{#                                                </span>#}
+{#                                            </div>#}
+{#                                            <div class="project-content">#}
+{#                                                <h3>Mindscapes</h3>#}
+{#                                                <p>Robotic Automation</p>#}
+{#                                                <a href="project-detail.html" class="theme-btn common-box">#}
+{#                                                    <span>#}
+{#                                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="icon"></span>#}
+{#                                                    </span>#}
+{#                                                </a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="project-slide-col-2">#}
+{#                                        <div class="project-slider-box">#}
+{#                                            <a href="project-detail.html" class="overlay-link"></a>#}
+{#                                            <div class="project-img">#}
+{#                                                <img src="/static/assets/imgs/project-1.png" alt="Project">#}
+{#                                                <span class="badge-year">#}
+{#                                                    <span class="badge-inner">#}
+{#                                                        <span>2024</span>#}
+{#                                                        <span>2024</span>#}
+{#                                                    </span>#}
+{#                                                </span>#}
+{#                                            </div>#}
+{#                                            <div class="project-content">#}
+{#                                                <h3>Retro Remix</h3>#}
+{#                                                <p>Ux Design</p>#}
+{#                                                <a href="project-detail.html" class="theme-btn common-box">#}
+{#                                                    <span>#}
+{#                                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="icon"></span>#}
+{#                                                    </span>#}
+{#                                                </a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <div class="project-slider-box">#}
+{#                                            <a href="project-detail.html" class="overlay-link"></a>#}
+{#                                            <div class="project-img">#}
+{#                                                <img src="/static/assets/imgs/project-4.png" alt="Project">#}
+{#                                                <span class="badge-year">#}
+{#                                                    <span class="badge-inner">#}
+{#                                                        <span>2024</span>#}
+{#                                                        <span>2024</span>#}
+{#                                                    </span>#}
+{#                                                </span>#}
+{#                                            </div>#}
+{#                                            <div class="project-content">#}
+{#                                                <h3>Light Play</h3>#}
+{#                                                <p>SEO</p>#}
+{#                                                <a href="project-detail.html" class="theme-btn common-box">#}
+{#                                                    <span>#}
+{#                                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="icon"></span>#}
+{#                                                    </span>#}
+{#                                                </a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </section>#}
+            <!-- End Project -->
+
+
+            <!-- Partner
+            ======================================= -->
+{#            <section class="partner-area">#}
+{#                <div class="custom-container">#}
+{#                    <div class="partner-header section-header">#}
+{#                        <h4 class="common-box subtitle">#}
+{#                            Partners#}
+{#                        </h4>#}
+{#                        <div class="animation-texts-wrap">#}
+{#                            <div class="animation-text-inner">#}
+{#                                <ul>#}
+{#                                    <li>⌘ It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="partner-slider-wrap">#}
+{#                        <div class="partner-slider-inner">#}
+{#                            <ul>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-1.png" alt="Client"></li>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-2.png" alt="Client"></li>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-3.png" alt="Client"></li>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-4.png" alt="Client"></li>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-5.png" alt="Client"></li>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-6.png" alt="Client"></li>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-1.png" alt="Client"></li>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-2.png" alt="Client"></li>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-3.png" alt="Client"></li>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-4.png" alt="Client"></li>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-5.png" alt="Client"></li>#}
+{#                                <li class="common-box"><img src="/static/assets/imgs/client-6.png" alt="Client"></li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="project-experience-wrap">#}
+{#                        <div class="project-experience">#}
+{#                            <h2>12+</h2>#}
+{#                            <p>Years of experience</p>#}
+{#                        </div>#}
+{#                        <div class="project-experience">#}
+{#                            <h2>100+</h2>#}
+{#                            <p>Completed Projects</p>#}
+{#                        </div>#}
+{#                        <div class="project-experience">#}
+{#                            <h2>$16M</h2>#}
+{#                            <p>Partners Raised</p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </section>#}
+            <!-- End Partner -->
+
+
+            <!-- Education & Experience
+            ======================================= -->
+{#            <section class="edc-and-exp-area">#}
+{#                <div class="custom-container">#}
+{#                    <div class="edc-and-exp-inner">#}
+{#                        <div class="edc-and-exp-inner-box edc-wrap">#}
+{#                            <h4 class="subtitle common-box">Education</h4>#}
+{##}
+{#                            <div class="edc-and-exp-lists">#}
+{#                                <div class="edc-and-exp-box">#}
+{#                                    <div class="img-box">#}
+{#                                        <img src="/static/assets/imgs/edc-1.jpg" alt="Education">#}
+{#                                    </div>#}
+{#                                    <div class="content">#}
+{#                                        <span class="date">2007 - 2017</span>#}
+{#                                        <h3><a href="#">Web Designer & Developer</a></h3>#}
+{#                                        <p>Adobe Creative Cloud</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="edc-and-exp-box">#}
+{#                                    <div class="img-box">#}
+{#                                        <img src="/static/assets/imgs/edc-2.jpg" alt="Education">#}
+{#                                    </div>#}
+{#                                    <div class="content">#}
+{#                                        <span class="date">2017 - 2020</span>#}
+{#                                        <h3><a href="#">Front-End Developer</a></h3>#}
+{#                                        <p>Spotify</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="edc-and-exp-box">#}
+{#                                    <div class="img-box">#}
+{#                                        <img src="/static/assets/imgs/edc-3.jpg" alt="Education">#}
+{#                                    </div>#}
+{#                                    <div class="content">#}
+{#                                        <span class="date">2020 - 2024</span>#}
+{#                                        <h3><a href="#">Webflow Developer & Co-Founder</a></h3>#}
+{#                                        <p>IBM Technologies</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <div class="edc-and-exp-inner-box exp-wrap">#}
+{#                            <h4 class="subtitle common-box">Experience</h4>#}
+{##}
+{#                            <div class="edc-and-exp-lists">#}
+{#                                <div class="edc-and-exp-box">#}
+{#                                    <div class="img-box">#}
+{#                                        <img src="/static/assets/imgs/exp-1.png" alt="Education">#}
+{#                                    </div>#}
+{#                                    <div class="content">#}
+{#                                        <span class="date">2007 - 2017</span>#}
+{#                                        <h3><a href="#">Figma Designing & Prototyping</a></h3>#}
+{#                                        <p>Bluebase Designs</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="edc-and-exp-box">#}
+{#                                    <div class="img-box">#}
+{#                                        <img src="/static/assets/imgs/exp-2.png" alt="Education">#}
+{#                                    </div>#}
+{#                                    <div class="content">#}
+{#                                        <span class="date">2017 - 2020</span>#}
+{#                                        <h3><a href="#">Full Stack Developer</a></h3>#}
+{#                                        <p>Larsen & Toubro</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="edc-and-exp-box">#}
+{#                                    <div class="img-box">#}
+{#                                        <img src="/static/assets/imgs/exp-3.png" alt="Education">#}
+{#                                    </div>#}
+{#                                    <div class="content">#}
+{#                                        <span class="date">2020 - 2024</span>#}
+{#                                        <h3><a href="#">Cloud Development Operation</a></h3>#}
+{#                                        <p>Mandro Studio</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </section>#}
+            <!-- End Education & Experience -->
+
+
+            <!-- Service
+            ======================================= -->
+            <section class="service-area">
+                <div class="custom-container">
+
+                    <div class="service-header section-header">
+                        <h4 class="common-box subtitle">
+                            Services
+                        </h4>
+                        <div class="animation-texts-wrap">
+                            <div class="animation-text-inner">
+                                <ul>
+                                    <li>⌘ Decision making: Analytic Hierarchy Process, Similarity to Ideal Solution, Grey Relational Analysis, Analytic Network Process, ... ⌘</li>
+                                    <li>Machine learning: Support Vector Machines, Linear Regression, Random Forest, Gradient Boosting Machines, ... ⌘</li>
+                                    <li>Deep neural network: Recurrent Neural Networks, Deep Belief Networks, Long Short-Term Memory, Autoencoders, ... ⌘</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-lists">
+                        <div class="service-box">
+                            <a href="{% url 'rank' %}" class="overlay-link"></a>
+                            <h3><a href="{% url 'rank' %}">Multi-Criteria Decision Making</a></h3>
+                            <p>MCDM and prioritization strategies </p>
+                            <span>+ 30 methods</span>
+                            <div class="icon">
+                                <i class="ph-duotone ph-squares-four"></i>
+                            </div>
+                        </div>
+                        <div class="service-box">
+                            <a href="#" class="overlay-link"></a>
+                            <h3><a href="#">Fuzzy Methods</a></h3>
+                            <p>Developing and implementing tools</p>
+                            <span>coming soon</span>
+                            <div class="icon">
+                                <i class="ph ph-cloud-check"></i>
+                            </div>
+                        </div>
+                        <div class="service-box">
+                            <a href="#" class="overlay-link"></a>
+                            <h3><a href="#">Weighting Algorithms</a></h3>
+                            <p>Developing and implementing tools</p>
+                            <span>coming soon</span>
+                            <div class="icon">
+                                <i class="las la-chart-bar"></i>
+                            </div>
+                        </div>
+                        <div class="service-box">
+                            <a href="#" class="overlay-link"></a>
+                            <h3><a href="#">Linear and Non-Linear Programming</a></h3>
+                            <p>Developing and implementing tools</p>
+                            <span>coming soon</span>
+                            <div class="icon">
+                                <i class="ph-duotone ph-swatches"></i>
+                            </div>
+                        </div>
+                        <div class="service-box">
+                            <a href="#" class="overlay-link"></a>
+                            <h3><a href="#">Multi-Objective Decision Making</a></h3>
+                            <p>Developing and implementing tools</p>
+                            <span>coming soon</span>
+                            <div class="icon">
+                                <i class="ph ph-intersect-three"></i>
+                            </div>
+                        </div>
+                        <div class="service-box">
+                            <a href="#" class="overlay-link"></a>
+                            <h3><a href="#">Data Envelopment Analysis</a></h3>
+                            <p>Developing and implementing tools</p>
+                            <span>coming soon</span>
+                            <div class="icon">
+                                <i class="ph ph-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!-- End Service -->
+
+
+            <!-- Stack
+            ======================================= -->
+{#            <section class="stack-area">#}
+{#                <div class="custom-container">#}
+{#                    <div class="stack-header section-header">#}
+{#                        <h4 class="common-box subtitle">#}
+{#                            Stack#}
+{#                        </h4>#}
+{#                        <div class="animation-texts-wrap">#}
+{#                            <div class="animation-text-inner">#}
+{#                                <ul>#}
+{#                                    <li>⌘ It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="stack-lists">#}
+{#                        <div class="edc-and-exp-box stack-box">#}
+{#                            <div class="img-box">#}
+{#                                <img src="/static/assets/imgs/stack-1.png" alt="Stack">#}
+{#                            </div>#}
+{#                            <div class="content">#}
+{#                                <h3><a href="#">Framer</a></h3>#}
+{#                                <p>Start you dream sith with AI. Zero code, Maximum Speed.</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="edc-and-exp-box stack-box">#}
+{#                            <div class="img-box">#}
+{#                                <img src="/static/assets/imgs/stack-2.png" alt="Stack">#}
+{#                            </div>#}
+{#                            <div class="content">#}
+{#                                <h3><a href="#">Hyper</a></h3>#}
+{#                                <p>Hyper is an electron based terminal Application.</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="edc-and-exp-box stack-box">#}
+{#                            <div class="img-box">#}
+{#                                <img src="/static/assets/imgs/stack-3.png" alt="Stack">#}
+{#                            </div>#}
+{#                            <div class="content">#}
+{#                                <h3><a href="#">Brave Browser</a></h3>#}
+{#                                <p>The best privacy policy online network.</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="edc-and-exp-box stack-box">#}
+{#                            <div class="img-box">#}
+{#                                <img src="/static/assets/imgs/stack-4.png" alt="Stack">#}
+{#                            </div>#}
+{#                            <div class="content">#}
+{#                                <h3><a href="#">IA Writer</a></h3>#}
+{#                                <p>Pure writing pleasure with in your hands.</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="edc-and-exp-box stack-box">#}
+{#                            <div class="img-box">#}
+{#                                <img src="/static/assets/imgs/stack-5.png" alt="Stack">#}
+{#                            </div>#}
+{#                            <div class="content">#}
+{#                                <h3><a href="#">Superhuman</a></h3>#}
+{#                                <p>The fastest Email Experience ever made.</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="edc-and-exp-box stack-box">#}
+{#                            <div class="img-box">#}
+{#                                <img src="/static/assets/imgs/stack-6.png" alt="Stack">#}
+{#                            </div>#}
+{#                            <div class="content">#}
+{#                                <h3><a href="#">Typefully</a></h3>#}
+{#                                <p>Write better tweets. Grow your audience.</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#            </section>#}
+            <!-- End Stack -->
+
+
+            <!-- Blog
+            ======================================= -->
+{#            <section class="blog-area">#}
+{#                <div class="custom-container">#}
+{#                    <div class="blog-header section-header">#}
+{#                        <a href="./blog.html" class="theme-btn common-box">#}
+{#                            <span>#}
+{#                                <span class="normal">Blog <i class="las la-arrow-right"></i></span>#}
+{#                                <span class="hover">Blog <i class="las la-arrow-right"></i></span>#}
+{#                            </span>#}
+{#                        </a>#}
+{#                        <div class="animation-texts-wrap">#}
+{#                            <div class="animation-text-inner">#}
+{#                                <ul>#}
+{#                                    <li>⌘ It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                    <li>It is a long established fact that a reader will distracted by the readable content of a page when looking an its readable ⌘</li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="blog-items">#}
+{#                        <div class="project-slider-box blog-box">#}
+{#                            <a href="./blog-detail.html" class="overlay-link"></a>#}
+{#                            <div class="project-img">#}
+{#                                <img src="/static/assets/imgs/blog-1.png" alt="Blog">#}
+{#                                <span class="badge-year">#}
+{#                                    <span class="badge-inner">#}
+{#                                        <span>2024</span>#}
+{#                                        <span>2024</span>#}
+{#                                    </span>#}
+{#                                </span>#}
+{#                            </div>#}
+{#                            <div class="project-content">#}
+{#                                <h3>Retro Remix</h3>#}
+{#                                <p>Ux Design</p>#}
+{#                                <a href="./blog-detail.html" class="theme-btn common-box">#}
+{#                                    <span>#}
+{#                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="icon"></span>#}
+{#                                    </span>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="project-slider-box blog-box">#}
+{#                            <a href="./blog-detail.html" class="overlay-link"></a>#}
+{#                            <div class="project-img">#}
+{#                                <img src="/static/assets/imgs/blog-2.png" alt="Blog">#}
+{#                                <span class="badge-year">#}
+{#                                    <span class="badge-inner">#}
+{#                                        <span>2024</span>#}
+{#                                        <span>2024</span>#}
+{#                                    </span>#}
+{#                                </span>#}
+{#                            </div>#}
+{#                            <div class="project-content">#}
+{#                                <h3>Mystical Meodows</h3>#}
+{#                                <p>Web Development</p>#}
+{#                                <a href="#" class="theme-btn common-box">#}
+{#                                    <span>#}
+{#                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="icon"></span>#}
+{#                                    </span>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="project-slider-box blog-box">#}
+{#                            <a href="./blog-detail.html" class="overlay-link"></a>#}
+{#                            <div class="project-img">#}
+{#                                <img src="/static/assets/imgs/blog-3.png" alt="Blog">#}
+{#                                <span class="badge-year">#}
+{#                                    <span class="badge-inner">#}
+{#                                        <span>2024</span>#}
+{#                                        <span>2024</span>#}
+{#                                    </span>#}
+{#                                </span>#}
+{#                            </div>#}
+{#                            <div class="project-content">#}
+{#                                <h3>Cybernetic Dreams</h3>#}
+{#                                <p>Brand Marketing</p>#}
+{#                                <a href="#" class="theme-btn common-box">#}
+{#                                    <span>#}
+{#                                        <span class="normal"><i class="las la-angle-right"></i></span>#}
+{#                                        <span class="hover"><img src="/static/assets/imgs/right-arrow.svg" alt="icon"></span>#}
+{#                                    </span>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#            </section>#}
+            <!-- End Blog -->
+
+
+            <!-- Testimonial
+            ======================================= -->
+            <section class="testimonial-area">
+                <div class="custom-container">
+                    <div class="testimonial-header section-header">
+                        <h4 class="subtitle common-box">Applications</h4>
+
+                        <div class="testimonial-slider-action-btn">
+                            <div class="testimonial-button-prev"><i class="las la-angle-left"></i></div>
+                            <div class="testimonial-button-next"><i class="las la-angle-right"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slider-wrapper">
+                        <div class="swiper testimonial-slider">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <div class="testimonial-box">
+                                        <div class="img-box">
+                                            <img src="/static/assets/imgs/testi1.png" alt="Testimonial">
+                                        </div>
+                                        <div class="content">
+                                            <div class="content-top">
+                                                <h3>Multi-Criteria Decision</h3>
+                                                <span>prioritization strategies</span>
+                                                <div class="icon">
+                                                    <img src="/static/assets/imgs/testimonial-icon-1.png" alt="shape">
+                                                </div>
+                                            </div>
+                                            <div class="content-bottom">
+                                                <img src="/static/assets/imgs/testimonial-shape.svg" alt="shape" class="line-shape">
+                                                <p>It involves evaluating alternatives based on multiple criteria to make informed choices, balancing conflicting objectives to reach optimal decisions.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="testimonial-box">
+                                        <div class="img-box">
+                                            <img src="/static/assets/imgs/testi2.png" alt="Testimonial">
+                                        </div>
+                                        <div class="content">
+                                            <div class="content-top">
+                                                <h3>Fuzzy Methods</h3>
+                                                <span>ranking fuzzy numbers</span>
+                                                <div class="icon">
+                                                    <img src="/static/assets/imgs/testimonial-icon-2.png" alt="shape">
+                                                </div>
+                                            </div>
+                                            <div class="content-bottom">
+                                                <img src="/static/assets/imgs/testimonial-shape.svg" alt="shape" class="line-shape">
+                                                <p>Fuzzy methods accommodate imprecise or uncertain information, providing a framework for decision-making in situations where outcomes are not entirely clear-cut.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="testimonial-box">
+                                        <div class="img-box">
+                                            <img src="/static/assets/imgs/testi3.png" alt="Testimonial">
+                                        </div>
+                                        <div class="content">
+                                            <div class="content-top">
+                                                <h3>Multi-Objective Decision</h3>
+                                                <span>prioritization strategies</span>
+                                                <div class="icon">
+                                                    <img src="/static/assets/imgs/testimonial-icon-1.png" alt="shape">
+                                                </div>
+                                            </div>
+                                            <div class="content-bottom">
+                                                <img src="/static/assets/imgs/testimonial-shape.svg" alt="shape" class="line-shape">
+                                                <p>It addresses problems with multiple, often conflicting, objectives, aiming to find solutions that optimize across these diverse goals.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="testimonial-box">
+                                        <div class="img-box">
+                                            <img src="/static/assets/imgs/testi4.png" alt="Testimonial">
+                                        </div>
+                                        <div class="content">
+                                            <div class="content-top">
+                                                <h3>Data Envelopment Analysis</h3>
+                                                <span>homogeneous decision-making units</span>
+                                                <div class="icon">
+                                                    <img src="/static/assets/imgs/testimonial-icon-2.png" alt="shape">
+                                                </div>
+                                            </div>
+                                            <div class="content-bottom">
+                                                <img src="/static/assets/imgs/testimonial-shape.svg" alt="shape" class="line-shape">
+                                                <p>DEA is a quantitative method used to assess the relative efficiency of decision-making units, such as companies or organizations, by comparing their inputs and outputs.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!-- End Testimonial -->
+
+
+            <!-- Gallery
+            ======================================= -->
+            <section class="gallery-area">
+                <div class="custom-container">
+                    <div class="gallery-header section-header">
+                        <h4 class="subtitle common-box">Methods</h4>
+
+                        <div class="animation-texts-wrap">
+                            <div class="animation-text-inner">
+                                <ul>
+                                    <li>⌘ AHP, Fuzzy AHP, ARAS, Fuzzy ARAS, Borda, BWM, Simplified BWM, Fuzzy BWM, CILOS, CoCoSo, CODAS, Copeland, COPRAS, Fuzzy COPRAS, CRADIS, CRITIC, Fuzzy CRITIC, DEMATEL, Fuzzy DEMATEL, EDAS, Fuzzy EDAS ⌘</li>
+                                    <li>Entropy, ELECTRE (I, I_s, I_v, II, III, IV, Tri-B), FUCOM, Fuzzy FUCOM, GRA, IDOCRIW, MABAC, MACBETH, MAIRCA, MARA, MARCOS, MAUT, MEREC, MOORA, Fuzzy MOORA, MOOSRA, MULTIMOORA, OCRA, Fuzzy OCRA, ORESTE, PIV ⌘</li>
+                                    <li>PROMETHEE (I, II, III, IV, V, VI, Gaia), EC PROMETHEE, RAFSI, REGIME, ROC, ROV, RRW, RSW, SAW, SECA, SMART, SPOTIS, TODIM, PSI, MPSI, TOPSIS, Fuzzy TOPSIS, VIKOR, Fuzzy VIKOR, WINGS, WSM, Fuzzy WSM, WPM, Fuzzy WPM, WASPAS, Fuzzy WASPAS, WISP, Simple WISP ⌘</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="gallery-slider-wrapper">
+                        <div class="gallery-lists-anim">
+                            {% for article in latest_articles %}
+                            <div class="gallery-box">
+                                <img src="{{ article.image.url }}" alt="{{ article.name }}">
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!-- End Gallery -->
+
+
+            <!-- Contact
+            ======================================= -->
+            <section class="contact-area">
+                <div class="custom-container">
+                    <div class="contact-header section-header">
+                        <h4 class="subtitle common-box">Contact</h4>
+
+                        <div class="animation-texts-wrap">
+                            <div class="animation-text-inner">
+                                <ul>
+                                    <li>⌘ Feel free to reach out to us with any questions, comments, or concerns you may have. ⌘</li>
+                                    <li>Contact us today via email, phone, or the form below ⌘</li>
+                                    <li>We value your feedback and inquiries ⌘</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-inner">
+                        <div class="contact-form">
+                            <form id="contactForm" method="post" action="{% url 'home' %}">
+                                {% csrf_token %}
+{#                                <input type="hidden" name="access_key" value="0ea6f02e-35e1-4bc8-801a-f700e7c5a95c">#}
+{#                                <input type="hidden" name="subject">#}
+
+                                <input name="name" id="name" type="text" placeholder="Name">
+                                <input name="email" id="email" type="email" placeholder="Email">
+                                <input name="subject" id="subject" type="text" placeholder="Subject">
+                                <textarea name="message" id="comments" placeholder="Message"></textarea>
+                                <button type="submit">Submit</button>
+                                <p class="text-base text-gray-400" style="margin-top: 12px;" id="result"></p>
+                            </form>
+                        </div>
+
+                        <div class="contact-infos">
+                            <h4 class="subtitle common-box">
+                                Address
+                            </h4>
+                            <ul>
+                                <li>
+                                    <div class="icon">
+                                        <i class="lar la-map"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Email</h3>
+                                        <p style="margin-bottom: 8px"><a href="mailto:magicbytesinfo@mail.com">magicbytesinfo@mail.com</a></p>
+                                        <p>Rest assured, we regularly monitor your emails.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                         <i class="las la-headphones"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Contact Info</h3>
+                                        <p>
+                                            <a href="tel:+989178109053">+98 917 810 9053</a>
+                                        </p>
+                                        <p>We're available from 9 AM to 7 PM to respond promptly.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!-- End Contact -->
+
+
+
+            <!-- Footer
+            ======================================= -->
+            <footer class="footer-area">
+                <div class="left">
+                    <p>&copy; 2024 All rights reserved by <a href="#">Decision-Tools Team</a></p>
+                    <p class="mid"><span class="circle-icon"></span></p>
+                    <a href="{% url 'rank' %}">Test Service</a>
+                </div>
+                <a href="#top" class="backto-top">Scroll to top <i class="las la-arrow-up"></i></a>
+            </footer>
+            <!-- End Footer -->
+
+        </div>
+
+    </main>
+
+
+
+    <!-- Jquery
+    ======================================= -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+    <script src="/static/assets/js/jquery-3.7.1.js"></script>
+    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/swiper.min.js"></script>
+    <script src="/static/assets/js/moment.min.js"></script>
+    <script src="/static/assets/js/ajaxform.js"></script>
+    <script src="/static/assets/js/main.js"></script>
+
+
+    <script type="module">
+        import createGlobe from 'https://cdn.skypack.dev/cobe'
+
+        let phi = 0
+        let canvas = document.getElementById("cobe")
+
+        let background = "#000000";
+        let baseColor = "#6ccaf4";
+        let glowColor = "#60b6f2";
+        let markerColor = "#6ccaf4";
+
+        function convertRGB(color) {
+            // Remove '#' from the beginning of the color string if present
+            color = color.replace(/^#/, '');
+
+            // Parse the color string into RGB components
+            let r = parseInt(color.substring(0, 2), 16) / 255;
+            let g = parseInt(color.substring(2, 4), 16) / 255;
+            let b = parseInt(color.substring(4, 6), 16) / 255;
+
+            return { r, g, b };
+        }
+
+
+        let baseConvert = convertRGB(baseColor);
+        let glowConvert = convertRGB(glowColor);
+        let markerConvert = convertRGB(markerColor);
+
+        const globe = createGlobe(canvas, {
+            devicePixelRatio: 1,
+            width: 600,
+            height: 600,
+            phi: 0,
+            speed: 1,
+            theta: .3,
+            dark: 0,
+            diffuse: 2,
+            mapSamples: 20000,
+            mapBrightness: 20,
+            markerColor: [0.1, 0.8, 1],
+            baseColor: [baseConvert.r, baseConvert.g, baseConvert.b],
+            glowColor: [glowConvert.r, glowConvert.g, glowConvert.b],
+            markerSize: .1,
+            markers: [
+            { location: [37.7595, -122.4367], size: 0.03 },
+            { location: [40.7128, -74.006], size: 0.1 },
+            ],
+            onRender: (state) => {
+                state.phi = phi
+                phi += 0.01
+            },
+        })
+    </script>
 </body>
 </html>

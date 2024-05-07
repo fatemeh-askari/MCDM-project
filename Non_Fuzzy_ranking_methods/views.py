@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Request, Indicator, Choice, MatrixData
+from .models import Request, Indicator, Choice, MatrixData, Method
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import MethodForm, IndicatorForm, ChoiceForm
 from django.http import HttpResponse
@@ -126,110 +126,156 @@ def calculate_method(matrix_data, indicator_weights, indicator_types, method_nam
         hyperparameter_value = 0.5
     elif method_name == 'method-WASPAS' and hyperparameter_value is None:
         hyperparameter_value = 0.5
+    else:
+        hyperparameter_value = hyperparameter_value
 
     # Call the corresponding method based on the method_name argument
     if method_name == 'method-ARAS':
         from pyDecision.algorithm import aras_method
-        rank = aras_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = aras_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-Borda':
         from pyDecision.algorithm import borda_method
-        rank = borda_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = borda_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-CoCoSo':
         from pyDecision.algorithm import cocoso_method
-        rank = cocoso_method(dataset, weights, criterion_type, L=0.5, graph=True, verbose=True)
+        rank = cocoso_method(dataset, weights, criterion_type, L=hyperparameter_value, graph=False, verbose=True)
     elif method_name == 'method-CODAS':
         from pyDecision.algorithm import codas_method
-        rank = codas_method(dataset, weights, criterion_type, lmbd=0.02, graph=True, verbose=True)
+        rank = codas_method(dataset, weights, criterion_type, lmbd=hyperparameter_value, graph=False, verbose=True)
     elif method_name == 'method-Copeland':
         from pyDecision.algorithm import copeland_method
-        rank = copeland_method(dataset, criterion_type, graph=True, verbose=True)
+        rank = copeland_method(dataset, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-COPRAS':
         from pyDecision.algorithm import copras_method
-        rank = copras_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = copras_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-CRADIS':
         from pyDecision.algorithm import cradis_method
-        rank = cradis_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = cradis_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-EDAS':
         from pyDecision.algorithm import edas_method
-        rank = edas_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = edas_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-GRA':
         from pyDecision.algorithm import gra_method
-        rank = gra_method(dataset, weights, criterion_type, epsilon=0.5, graph=True, verbose=True)
+        rank = gra_method(dataset, weights, criterion_type, epsilon=hyperparameter_value, graph=False, verbose=True)
     elif method_name == 'method-MABAC':
         from pyDecision.algorithm import mabac_method
-        rank = mabac_method(dataset, criterion_type, graph=True, verbose=True)
+        rank = mabac_method(dataset, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-MACBETH':
         from pyDecision.algorithm import macbeth_method
-        rank = macbeth_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = macbeth_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-MAIRCA':
         from pyDecision.algorithm import mairca_method
-        rank = mairca_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = mairca_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-MARA':
         from pyDecision.algorithm import mara_method
-        rank = mara_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = mara_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-MARCOS':
         from pyDecision.algorithm import marcos_method
-        rank = marcos_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = marcos_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-MOORA':
         from pyDecision.algorithm import moora_method
-        rank = moora_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = moora_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-MOOSRA':
         from pyDecision.algorithm import moosra_method
-        rank = moosra_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = moosra_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-OCRA':
         from pyDecision.algorithm import ocra_method
-        rank = ocra_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = ocra_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-ORESTE':
         from pyDecision.algorithm import oreste_method
-        rank = oreste_method(dataset, weights, criterion_type, alpha=0.4, graph=True, verbose=True)
+        rank = oreste_method(dataset, weights, criterion_type, alpha=hyperparameter_value, graph=False, verbose=True)
     elif method_name == 'method-PIV':
         from pyDecision.algorithm import piv_method
-        rank = piv_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = piv_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-PSI':
         from pyDecision.algorithm import psi_method
-        rank = psi_method(dataset, criterion_type, graph=True, verbose=True)
+        rank = psi_method(dataset, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-REGIME':
         from pyDecision.algorithm import regime_method
-        rank = regime_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = regime_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-ROV':
         from pyDecision.algorithm import rov_method
-        rank = rov_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = rov_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-SAW':
         from pyDecision.algorithm import saw_method
-        rank = saw_method(dataset, criterion_type, weights, graph=True, verbose=True)
+        rank = saw_method(dataset, criterion_type, weights, graph=False, verbose=True)
     elif method_name == 'method-TODIM':
         from pyDecision.algorithm import todim_method
-        rank = todim_method(dataset, criterion_type, weights, teta=1, graph=True, verbose=True)
+        rank = todim_method(dataset, criterion_type, weights, teta=hyperparameter_value, graph=False, verbose=True)
     elif method_name == 'method-TOPSIS':
         from pyDecision.algorithm import topsis_method
-        rank = topsis_method(dataset, weights, criterion_type, graph=True, verbose=True)
+        rank = topsis_method(dataset, weights, criterion_type, graph=False, verbose=True)
     elif method_name == 'method-WSM':
         from pyDecision.algorithm import waspas_method
-        wsm, wpm, waspas = waspas_method(dataset, weights, criterion_type, lambda_value=0.5, graph=True)
-        rank = wsm
+        wsm, wpm, waspas = waspas_method(dataset, criterion_type, weights, lambda_value=hyperparameter_value, graph=False)
+        ranked_options = [f'a{i + 1}: {score:.3f}' for i, score in enumerate(wsm)]
+        rank = ranked_options
     elif method_name == 'method-WPM':
         from pyDecision.algorithm import waspas_method
-        wsm, wpm, waspas = waspas_method(dataset, weights, criterion_type, lambda_value=0.5, graph=True)
-        rank = wpm
+        wsm, wpm, waspas = waspas_method(dataset, criterion_type, weights, lambda_value=hyperparameter_value, graph=False)
+        ranked_options = [f'a{i + 1}: {score:.3f}' for i, score in enumerate(wpm)]
+        rank = ranked_options
     elif method_name == 'method-WASPAS':
         from pyDecision.algorithm import waspas_method
-        wsm, wpm, waspas = waspas_method(dataset, weights, criterion_type, lambda_value=0.5, graph=True)
-        rank = waspas
-    elif method_name == 'Simple WISP':
+        wsm, wpm, waspas = waspas_method(dataset, criterion_type, weights, lambda_value=hyperparameter_value, graph=False)
+        sorted_indices = sorted(range(len(waspas)), key=lambda i: waspas[i], reverse=True)
+        # ranked_options = [f'a{i + 1}: {score:.3f}' for i, score in enumerate(waspas[sorted_indices])]
+        ranked_options = [f'a{i + 1}: {score:.3f}' for i, score in enumerate(waspas)]
+        rank = ranked_options
+    elif method_name == 'method-Simple WISP':
         from pyDecision.algorithm import wisp_method
-        rank = wisp_method(dataset, criterion_type, weights, simplified=True, graph=True, verbose=True)
+        rank = wisp_method(dataset, criterion_type, weights, simplified=True, graph=False, verbose=True)
     elif method_name == 'method-WISP':
         from pyDecision.algorithm import wisp_method
-        rank = wisp_method(dataset, criterion_type, weights, simplified=False, graph=True, verbose=True)
+        rank = wisp_method(dataset, criterion_type, weights, simplified=False, graph=False, verbose=True)
     else:
         raise ValueError("Invalid method name.")
 
-    # Convert rank array to a dictionary with option names as keys
-    option_names = [f'rank{i+1}' for i in range(len(rank))]
-    result_dict = {option_name: rank_val for option_name, rank_val in zip(option_names, rank)}
+    # # Convert rank array to a dictionary with option names as keys
+    # option_names = [f'rank{i+1}' for i in range(len(rank))]
+    # result_dict = {option_name: rank_val for option_name, rank_val in zip(option_names, rank)}
+    #
+    # # # Return the ranking output
+    # return result_dict
 
-    # Return the ranking output
-    return result_dict
+    if method_name in ['method-WSM', 'method-WPM', 'method-WASPAS']:
+        formatted_result = []
+        for i, rank_val in enumerate(rank):
+            option_num = i + 1
+            # Split the rank_val string to extract the rank and score
+            rank_parts = rank_val.split(':')
+            formatted_rank = int(rank_parts[0][1:])  # Extract the rank value without the 'a' character
+            formatted_score = round(float(rank_parts[1]), 3)  # Convert score to float and round to three decimal places
+            formatted_result.append({'option_num': option_num, 'rank': formatted_rank, 'score': formatted_score})
+    elif method_name in ['method-Simple WISP', 'method-WISP']:
+        formatted_result = []
+        for i, score in enumerate(rank):
+            option_num = i + 1
+            formatted_result.append(
+                {'option_num': option_num, 'score': round(score, 2)})  # Round score to two decimal places
+    else:
+        formatted_result = []
+        for i, rank_val in enumerate(rank):
+            option_num = i + 1
+            formatted_rank = int(rank_val[0])  # Convert rank to integer to remove decimals
+            formatted_score = round(rank_val[1], 3)  # Round score to three decimal places
+            formatted_result.append({'option_num': option_num, 'rank': formatted_rank, 'score': formatted_score})
+
+
+    return formatted_result
+
+
+
+# def format_result(result_dict):
+#     formatted_result = []
+#     for key, value in result_dict.items():
+#         option_num = int(key.split('rank')[1])
+#         rank = value[0]  # Extract rank from the first element of the array
+#         score = value[1]  # Extract score from the second element of the array
+#         formatted_result.append({'option_num': option_num, 'rank': rank, 'score': score})
+#     return formatted_result
+
+
 
 method_calculations = {
     'method-ARAS': calculate_method,
@@ -277,13 +323,21 @@ def results(request, request_id):
     indicator_types = [indicator.type for indicator in indicators]
 
     # Debugging expressions
-    print("Indicator Weights:", indicator_weights)
-    print("Indicator Types:", indicator_types)
+    # print("Indicator Weights:", indicator_weights)
+    # print("Indicator Types:", indicator_types)
 
-    # Get the selected method and method name
-    selected_method = request_instance.method.name
-    method_name = f'{selected_method}'  # Assuming selected_method is an integer
+
+    # selected_method_name = request_instance.method.name
+    # method_name = f'{selected_method_name}'
+
+    selected_method = request_instance.method
+    method_name = selected_method.name
+    method_name = f'{method_name}'
+    method_description = selected_method.description
+    method_short_description = selected_method.short_description
     hyperparameter_value = selected_method.hyperparameter_value
+
+
 
 
     # Initialize calculation_result with a default value
@@ -293,13 +347,17 @@ def results(request, request_id):
     if method_name in method_calculations:
         # Execute the appropriate calculation function based on the selected method
         calculation_function = method_calculations[method_name]
-        calculation_result = calculation_function(matrix_data_obj.data, indicator_weights, indicator_types, method_name)
+        calculation_result = calculation_function(matrix_data_obj.data, indicator_weights, indicator_types, method_name, hyperparameter_value)
         if calculation_result is None:
             # Handle case where calculation result is None
             calculation_result = "Calculation result is not available"
     else:
         # Handle the case where the selected method is not found
         calculation_result = "Selected method is not supported"
+
+
+    choices = request_instance.choices.all()
+
 
     # Pass the necessary data to the template
     return render(request, './Non_Fuzzy_ranking_methods/Non_Fuzzy_results.html', {
@@ -309,5 +367,10 @@ def results(request, request_id):
         'hyperparameter_value': hyperparameter_value,
         'indicator_weights': indicator_weights,
         'indicator_types': indicator_types,
-        'calculation_result': calculation_result,  # Pass the calculation result to the template if needed
+        'calculation_result': calculation_result,
+        'choices': choices,# Pass the calculation result to the template if needed
+        'method_description': method_description,
+        'method_short_description': method_short_description,
+        'method_name': method_name,
+
     })
