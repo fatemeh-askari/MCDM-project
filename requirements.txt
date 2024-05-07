@@ -1,4 +1,4 @@
-﻿annotated-types
+annotated-types==0.6.0
 anyio
 asgiref
 cachetools
